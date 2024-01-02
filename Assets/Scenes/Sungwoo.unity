@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddad0438a9b92e4684e03dd3cfd5c52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 14
+  moveSpeed: 7
   swordParent: {fileID: 558331393}
 --- !u!61 &472477015
 BoxCollider2D:
