@@ -68,6 +68,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && qSkill != null && qSkillTimer > qSkillDetails.coolTime)
         {
             qSkill.UseSkill();
+            qSkillTimer = 0;
         }
     }
 
