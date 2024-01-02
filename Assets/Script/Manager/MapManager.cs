@@ -8,8 +8,37 @@ public class MapManager : MonoBehaviour
 {
     [SerializeField] private int roomNumber; // 생성할 방의 개수
     [SerializeField] private GameObject startMap; // 시작 맵
+    [SerializeField] private GameObject bossMap; // 보스 맵
     [SerializeField] private GameObject[] roomArray; // 랜덤으로 돌릴 모든 맵 프리팹
     private List<GameObject> randRoomArray = new List<GameObject>(); // 랜덤으로 돌려서 나온 맵들
+    private int currentMap = 0; // 현재 진행중인 맵
+
+    private static MapManager instance = null;
+
+    public static MapManager Instance
+    {
+        get
+        {
+            if (null == instance)
+            {
+                return null;
+            }
+
+            return instance;
+        }
+    }
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -35,5 +64,20 @@ public class MapManager : MonoBehaviour
             randRoomArray[randRoomArray.Count - 1].SetActive(false);
             previousMap = randomMap;
         }
+
+        randRoomArray.Add(Instantiate(bossMap, Vector3.zero, Quaternion.identity));
+        randRoomArray[randRoomArray.Count - 1].SetActive(false);
+    }
+
+    public void OpenMap()
+    {
+        if (currentMap > randRoomArray.Count)
+            return;
+
+        randRoomArray[currentMap + 1].SetActive(true);
+        randRoomArray[currentMap].SetActive(false);
+        GameManager.Instance.curPlayer.transform.position
+            = randRoomArray[currentMap + 1].GetComponent<Map>().enterPoint.position;
+        currentMap++;
     }
 }
