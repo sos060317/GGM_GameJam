@@ -324,6 +324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  maxHealth: 0
   swordParent: {fileID: 558331393}
 --- !u!1 &558331392
 GameObject:
