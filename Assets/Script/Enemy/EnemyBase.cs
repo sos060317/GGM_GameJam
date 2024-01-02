@@ -1,0 +1,68 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+public abstract class EnemyBase : MonoBehaviour
+{
+    #region ±âº» ½ºÅÈ
+
+    [Space(10)]
+    [Header("±âº» ½ºÅÈ")]
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float maxHealth;
+
+    #endregion
+
+    public Effect dieEffect;
+
+    #region °ø°Ý °ü·Ã ½ºÅÈ
+
+    [Space(10)]
+    [Header("°ø°Ý °ü·Ã ½ºÅÈ")]
+    [SerializeField] private float attackRate;
+    [SerializeField] protected EnemyBullet bulletPrefab;
+
+    #endregion
+
+    private float attackTimer;
+
+    protected Transform target;
+
+    NavMeshAgent agent;
+
+    private void Start()
+    {
+        target = GameManager.Instance.curPlayer.transform;
+
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.speed = moveSpeed;
+    }
+
+    private void Update()
+    {
+        MoveUpdate();
+        AttackUpdate();
+    }
+
+    private void MoveUpdate()
+    {
+        agent.SetDestination(target.position);
+    }
+
+    private void AttackUpdate()
+    {
+        if (attackTimer >= attackRate)
+        {
+            ShootBullet();
+
+            attackTimer = 0;
+        }
+
+        attackTimer += Time.deltaTime;
+    }
+
+    protected abstract void ShootBullet();
+}
