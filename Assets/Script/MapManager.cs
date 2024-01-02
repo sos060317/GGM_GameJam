@@ -1,26 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 // 랜덤한 룸을 순서대로 나열
 public class MapManager : MonoBehaviour
 {
+    [SerializeField] private int roomNumber; // 생성할 방의 개수
     [SerializeField] private GameObject startMap; // 시작 맵
     [SerializeField] private GameObject[] roomArray; // 랜덤으로 돌릴 모든 맵 프리팹
     private List<GameObject> randRoomArray = new List<GameObject>(); // 랜덤으로 돌려서 나온 맵들
 
     private void Start()
     {
-        randRoomArray.Add(startMap);
+        RoomNumberInitialization();
+    }
 
-        for(int i = 0; i < roomArray.Length; i++) 
+    private void RoomNumberInitialization()
+    {
+        int currentRoomNumber = 0;
+
+        randRoomArray.Add(Instantiate(startMap, Vector3.zero, Quaternion.identity));
+
+        while (currentRoomNumber < roomNumber)
         {
-            int previousMap;
             int randomMap = Random.Range(0, roomArray.Length);
-            randRoomArray.Add(roomArray[randomMap]);
+            int previousMap = -1;
+
+            if (randomMap == previousMap)
+                return;
+
+            currentRoomNumber++;
+            randRoomArray.Add(Instantiate(roomArray[randomMap], Vector3.zero, Quaternion.identity));
+            randRoomArray[randRoomArray.Count - 1].SetActive(false);
             previousMap = randomMap;
         }
     }
-
-
 }
