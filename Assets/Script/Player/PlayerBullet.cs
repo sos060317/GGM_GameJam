@@ -9,6 +9,8 @@ public class PlayerBullet : MonoBehaviour
     [SerializeField] private bool isEnemyPenetrate; // 적 관통
     [SerializeField] private bool isWallPenetrate;  // 벽 관통
 
+    [SerializeField] private Effect dieEffect;
+
     private float attackDamage;
 
     private Rigidbody2D rigid;
@@ -31,6 +33,7 @@ public class PlayerBullet : MonoBehaviour
             // 적을 관통할수 없다면
             if (!isEnemyPenetrate)
             {
+                Instantiate(dieEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }
@@ -40,6 +43,7 @@ public class PlayerBullet : MonoBehaviour
             // 벽을 관통할 수 없다면
             if (!isWallPenetrate)
             {
+                Instantiate(dieEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
             }
         }
