@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SkillPanel qSkillPanel;
     [SerializeField] private SkillPanel eSkillPanel;
 
+    [SerializeField] private CameraShake cameraShake;
+
     private SkillBase qSkill;
     private SkillBase eSkill;
 
@@ -70,6 +72,12 @@ public class GameManager : MonoBehaviour
             qSkill.UseSkill();
             qSkillTimer = 0;
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && eSkill != null && eSkillTimer > eSkillDetails.coolTime)
+        {
+            eSkill.UseSkill();
+            eSkillTimer = 0;
+        }
     }
 
     private void SkillCooltimeUpdate()
@@ -79,6 +87,13 @@ public class GameManager : MonoBehaviour
             qSkillPanel.UpdateFillAmount(qSkillTimer / qSkillDetails.coolTime);
 
             qSkillTimer += Time.deltaTime;
+        }
+
+        if (eSkill != null)
+        {
+            eSkillPanel.UpdateFillAmount(eSkillTimer / eSkillDetails.coolTime);
+
+            eSkillTimer += Time.deltaTime;
         }
     }
 
@@ -111,5 +126,10 @@ public class GameManager : MonoBehaviour
             eSkillTimer = eSkillDetails.coolTime;
             return;
         }
+    }
+
+    public void CameraShake(float intensity, float time)
+    {
+        cameraShake.ShakeCamera(intensity, time);
     }
 }
