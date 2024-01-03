@@ -33,8 +33,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected Transform target;
 
-    NavMeshAgent agent;
+    protected bool canMove = true;
+
+    protected NavMeshAgent agent;
     Rigidbody2D rigid;
+    Animator anim;
 
     private void Start()
     {
@@ -46,6 +49,7 @@ public abstract class EnemyBase : MonoBehaviour
         agent.speed = moveSpeed;
 
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 
         curHealth = maxHealth;
         attackRate = Random.Range(attackMinRate, attackMaxRate);
@@ -59,6 +63,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     private void MoveUpdate()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         agent.SetDestination(target.position);
     }
 
@@ -66,7 +75,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (attackTimer >= attackRate)
         {
-            ShootBullet();
+            anim.SetTrigger("Attack");
             attackRate = Random.Range(attackMinRate, attackMaxRate);
 
             attackTimer = 0;
