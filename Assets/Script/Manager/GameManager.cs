@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     private bool isEmptyQSkill = true;
     private bool isEmptyESkill = true;
 
-    //[HideInInspector] public bool o = null;
+    [HideInInspector] public Oxygen oxygen = null;
 
     public static GameManager Instance
     {
@@ -205,27 +205,14 @@ public class GameManager : MonoBehaviour
             eSkillTimer = eSkillDetails.coolTime;
         }
     }
-    
-    //public void OxygenDown(float amount)
-    //{
-    //    if (o == null)
-    //    {
-    //        return;
-    //    }
 
-    //    o.AmountDown(amount);
-    //}
+    public void OxygenDown(float amount)
+    {
+        if (oxygen == null)
+        {
+            return;
+        }
 
-    //////
-    /////
-
-    //private void Start()
-    //{
-    //    GameManager.instance.o = this;
-    //}
-
-    //private void OnDisable()
-    //{
-    //    GameManager.Instance.o = null;
-    //}
+        oxygen.AmountDown(amount);
+    }
 }
