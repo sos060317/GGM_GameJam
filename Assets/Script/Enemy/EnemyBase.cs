@@ -21,12 +21,14 @@ public abstract class EnemyBase : MonoBehaviour
 
     [Space(10)]
     [Header("공격 관련 스탯")]
-    [SerializeField] private float attackRate;
+    [SerializeField] private float attackMinRate;
+    [SerializeField] private float attackMaxRate;
     [SerializeField] protected EnemyBullet bulletPrefab;
 
     #endregion
 
     private float attackTimer;
+    private float attackRate;
     private float curHealth;
 
     protected Transform target;
@@ -46,6 +48,7 @@ public abstract class EnemyBase : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
 
         curHealth = maxHealth;
+        attackRate = Random.Range(attackMinRate, attackMaxRate);
     }
 
     private void Update()
@@ -64,6 +67,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (attackTimer >= attackRate)
         {
             ShootBullet();
+            attackRate = Random.Range(attackMinRate, attackMaxRate);
 
             attackTimer = 0;
         }
