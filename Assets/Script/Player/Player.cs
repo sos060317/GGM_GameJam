@@ -8,9 +8,26 @@ public class Player : MonoBehaviour
     public float maxHealth;
     public Transform swordParent;
 
+    #region 대쉬 관련 스탯
+
+    [Space(10)]
+    [Header("대쉬 관련 스탯")]
+    [SerializeField] private float dashTime;
+    [SerializeField] private KeyCode dashKey = KeyCode.LeftShift;
+    [SerializeField] private float dashCoolTime;
+    [SerializeField] private float dashSpeed;
+    [SerializeField] private float afterImageDistance;
+
+    #endregion
+
+    [SerializeField] private AfterImage afterImagePrefab;
+
     private float curHealth;
+    private float dashTimer;
 
     private bool isWalk;
+    private bool isDash;
+    private bool canDash;
 
     private Animator anim;
     private Rigidbody2D rigid;
@@ -29,13 +46,44 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        InputUpdate();
         MoveUpdate();
+        DashUpdate();
         SwordRotationUpdate();
         AnimationUpdate();
     }
 
+    private void InputUpdate()
+    {
+        // Dash
+        if (Input.GetKeyDown(dashKey) && canDash)
+        {
+            StartCoroutine(DashRoutine());
+        }
+    }
+
+    private void DashUpdate()
+    {
+        if (isDash)
+        {
+            return;
+        }
+
+        dashTimer -= Time.deltaTime;
+
+        if (dashTimer <= 0)
+        {
+            canDash = true;
+        }
+    }
+
     private void MoveUpdate()
     {
+        if (isDash)
+        {
+            return;
+        }
+
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
 
@@ -76,6 +124,45 @@ public class Player : MonoBehaviour
         swordParent.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
+    private IEnumerator DashRoutine()
+    {
+        float timer = 0f;
+
+        isDash = true;
+        canDash = false;
+
+        Vector3 lastAfterImagePos = transform.position;
+
+        Instantiate(afterImagePrefab, lastAfterImagePos, Quaternion.identity).InitAfterImage(sr.sprite, sr.flipX);
+
+        moveDirection.x = Input.GetAxisRaw("Horizontal");
+        moveDirection.y = Input.GetAxisRaw("Vertical");
+
+        rigid.velocity = moveDirection.normalized * dashSpeed;
+
+        while (timer <= dashTime)
+        {
+            if (Vector3.Distance(transform.position, lastAfterImagePos) >= afterImageDistance)
+            {
+                lastAfterImagePos = transform.position;
+
+                var afterImage = Instantiate(afterImagePrefab, lastAfterImagePos, Quaternion.identity);
+                afterImage.InitAfterImage(sr.sprite, sr.flipX);
+            }
+
+            timer += Time.deltaTime;
+
+            yield return null;
+        }
+
+        gameObject.layer = 8;
+
+        isDash = false;
+
+        dashTimer = dashCoolTime;
+
+        rigid.velocity = Vector3.zero;
+    }
 
     private void AnimationUpdate()
     {

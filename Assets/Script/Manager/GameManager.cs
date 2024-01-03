@@ -190,4 +190,16 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
+    public void SkillCooltimeReset(SkillBase skillBase)
+    {
+        if (qSkill == skillBase)
+        {
+            qSkillTimer = qSkillDetails.coolTime;
+        }
+        if (eSkill == skillBase)
+        {
+            eSkillTimer = eSkillDetails.coolTime;
+        }
+    }
 }
