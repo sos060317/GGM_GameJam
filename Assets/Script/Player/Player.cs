@@ -241,6 +241,13 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Init(PlayerLevelData data)
+    {
+        maxHealth = data.health;
+        moveSpeed = data.moveSpeed;
+        sword.damage = data.damage;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;

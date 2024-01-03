@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Image effectImage;
 
+    public PlayerLevelData[] playerLevelDatas;
+
+    [HideInInspector] public int curPlayerLevel = 0;
+
     private SkillBase qSkill;
     private SkillBase eSkill;
 
@@ -63,6 +67,8 @@ public class GameManager : MonoBehaviour
         eSkillPanel.Init(null);
 
         eSkillPanel.gameObject.SetActive(false);
+
+        PlayerLevelUp();
     }
 
     private void Update()
@@ -216,5 +222,12 @@ public class GameManager : MonoBehaviour
         }
 
         oxygen.AmountDown(amount);
+    }
+
+    public void PlayerLevelUp()
+    {
+        curPlayer.Init(playerLevelDatas[curPlayerLevel]);
+
+        curPlayerLevel++;
     }
 }

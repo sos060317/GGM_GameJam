@@ -11,6 +11,8 @@ public class TextSword : MonoBehaviour
 
     public Action attackEvent;
 
+    public float damage;
+
     private bool isAttack;
 
     private Animator anim;
@@ -41,7 +43,7 @@ public class TextSword : MonoBehaviour
 
         foreach (var target in targets)
         {
-            target.GetComponent<EnemyBase>().OnDamage(10);
+            target.GetComponent<EnemyBase>().OnDamage(damage);
         }
     }
 
