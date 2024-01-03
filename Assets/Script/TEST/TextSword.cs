@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TextSword : MonoBehaviour
 {
     public float scanRange;
 
     public LayerMask enemyLayer;
+
+    public Action attackEvent;
 
     private bool isAttack;
 
@@ -28,6 +31,7 @@ public class TextSword : MonoBehaviour
         {
             isAttack = true;
             anim.SetTrigger("Attack");
+            attackEvent?.Invoke();
         }
     }
 

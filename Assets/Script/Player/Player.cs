@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public float rushSkillScanRange;
     public LayerMask enemyLayer;
     public Transform swordParent;
+    public TextSword sword;
 
     #region 대쉬 관련 스탯
 
