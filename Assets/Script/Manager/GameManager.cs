@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
     private bool isCanESkill;       // E 스킬 해금 관련 변수
     private bool isEmptyQSkill = true;
     private bool isEmptyESkill = true;
+
+    //[HideInInspector] public bool o = null;
 
     public static GameManager Instance
     {
@@ -202,4 +205,27 @@ public class GameManager : MonoBehaviour
             eSkillTimer = eSkillDetails.coolTime;
         }
     }
+    
+    //public void OxygenDown(float amount)
+    //{
+    //    if (o == null)
+    //    {
+    //        return;
+    //    }
+
+    //    o.AmountDown(amount);
+    //}
+
+    //////
+    /////
+
+    //private void Start()
+    //{
+    //    GameManager.instance.o = this;
+    //}
+
+    //private void OnDisable()
+    //{
+    //    GameManager.Instance.o = null;
+    //}
 }

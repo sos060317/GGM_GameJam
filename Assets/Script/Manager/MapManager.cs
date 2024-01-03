@@ -52,6 +52,7 @@ public class MapManager : MonoBehaviour
         int previousMap = -1;
 
         randRoomArray.Add(Instantiate(startMap, Vector3.zero, Quaternion.identity));
+        randRoomArray[randRoomArray.Count - 1].GetComponent<Map>().mapState = MapState.Normal;
 
         while (currentRoomNumber < roomNumber)
         {
@@ -71,6 +72,7 @@ public class MapManager : MonoBehaviour
 
         randRoomArray.Add(Instantiate(bossMap, Vector3.zero, Quaternion.identity));
         randRoomArray[randRoomArray.Count - 1].SetActive(false);
+        randRoomArray[randRoomArray.Count - 1].GetComponent<Map>().mapState = MapState.Normal;
     }
 
     public void OpenMap()

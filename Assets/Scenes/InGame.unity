@@ -169,6 +169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac497a4b8a6cb14db755e58dd1a7627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scanRange: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!95 &180957330
 Animator:
   serializedVersion: 5
@@ -517,7 +521,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 7
   maxHealth: 0
+  rushSkillScanRange: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   swordParent: {fileID: 1882024822}
+  dashTime: 0
+  dashKey: 304
+  dashCoolTime: 0
+  dashSpeed: 0
+  afterImageDistance: 0
+  afterImagePrefab: {fileID: 0}
 --- !u!212 &661092744
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -567,7 +581,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &661092745
@@ -1059,6 +1073,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curPlayer: {fileID: 661092743}
+  qSkillPanel: {fileID: 0}
+  eSkillPanel: {fileID: 0}
+  cameraShake: {fileID: 0}
+  effectImage: {fileID: 0}
 --- !u!4 &1941422571
 Transform:
   m_ObjectHideFlags: 0
