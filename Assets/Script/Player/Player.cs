@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     public float maxHealth;
     public float rushSkillScanRange;
+    public float invincibilityTime;
     public LayerMask enemyLayer;
     public Transform swordParent;
     public TextSword sword;
@@ -32,6 +33,7 @@ public class Player : MonoBehaviour
     private bool isWalk;
     private bool isDash;
     private bool canDash;
+    private bool isInvincibility;
 
     private Animator anim;
     private Rigidbody2D rigid;
@@ -250,7 +252,32 @@ public class Player : MonoBehaviour
 
     public void OnDamege(float damage)
     {
+        if (isInvincibility)
+        {
+            return;
+        }
 
+        curHealth -= damage;
+
+        if (curHealth <= 0)
+        {
+            // Á×´Â ·ÎÁ÷
+
+            return;
+        }
+
+        StartCoroutine(HitRoutine());
+    }
+
+    private IEnumerator HitRoutine()
+    {
+        isInvincibility = true;
+        sr.color = new Color(1, 1, 1, 0.5f);
+
+        yield return new WaitForSeconds(invincibilityTime);
+
+        isInvincibility = false;
+        sr.color = new Color(1, 1, 1, 1);
     }
 
     private void OnDrawGizmos()
