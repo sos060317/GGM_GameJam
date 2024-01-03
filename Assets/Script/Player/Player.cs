@@ -248,6 +248,11 @@ public class Player : MonoBehaviour
         sword.damage = data.damage;
     }
 
+    public void OnDamege(float damage)
+    {
+
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
