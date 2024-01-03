@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,19 +49,22 @@ public class MapManager : MonoBehaviour
     private void RoomNumberInitialization()
     {
         int currentRoomNumber = 0;
+        int previousMap = -1;
 
         randRoomArray.Add(Instantiate(startMap, Vector3.zero, Quaternion.identity));
 
         while (currentRoomNumber < roomNumber)
         {
-            int randomMap = Random.Range(0, roomArray.Length);
-            int previousMap = -1;
+            int randomMap = UnityEngine.Random.Range(0, roomArray.Length);
+            
 
             if (randomMap == previousMap)
                 return;
 
             currentRoomNumber++;
             randRoomArray.Add(Instantiate(roomArray[randomMap], Vector3.zero, Quaternion.identity));
+            randRoomArray[randRoomArray.Count - 1].GetComponent<Map>().mapState
+                 = (MapState)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(MapState)).Length));
             randRoomArray[randRoomArray.Count - 1].SetActive(false);
             previousMap = randomMap;
         }
@@ -74,6 +78,7 @@ public class MapManager : MonoBehaviour
         if (currentMap > randRoomArray.Count)
             return;
 
+        Debug.Log(randRoomArray[currentMap].GetComponent<Map>().mapState);
         randRoomArray[currentMap + 1].SetActive(true);
         randRoomArray[currentMap].SetActive(false);
         GameManager.Instance.curPlayer.transform.position
