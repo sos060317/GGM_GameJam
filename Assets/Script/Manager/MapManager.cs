@@ -61,7 +61,7 @@ public class MapManager : MonoBehaviour
 
             if (randomMap == previousMap)
                 continue;
-
+                
             currentRoomNumber++;
             randRoomArray.Add(Instantiate(roomArray[randomMap], Vector3.zero, Quaternion.identity));
             randRoomArray[randRoomArray.Count - 1].GetComponent<Map>().mapState
