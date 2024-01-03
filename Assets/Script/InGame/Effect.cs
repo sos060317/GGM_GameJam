@@ -9,6 +9,9 @@ public class Effect : MonoBehaviour
     [SerializeField] private float sec;
     [SerializeField] private bool isRoop;
 
+    [SerializeField] private float shakeAmount = 0;
+    [SerializeField] private float shakeTime = 0;
+
     private SpriteRenderer sr;
     private WaitForSeconds waitTime;
 
@@ -17,6 +20,8 @@ public class Effect : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
 
         waitTime = new WaitForSeconds(sec / sprites.Count);
+
+        GameManager.Instance.CameraShake(shakeAmount, shakeTime);
 
         if (isRoop)
         {

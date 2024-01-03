@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 7
+  lifeTime: 10
   isEnemyPenetrate: 0
   isWallPenetrate: 0
   dieEffect: {fileID: 138997579803886252, guid: 419a82b355b226247b9dfa77abfee708, type: 3}

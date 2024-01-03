@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float lifeTime;
 
     [SerializeField] private bool isEnemyPenetrate; // 적 관통
     [SerializeField] private bool isWallPenetrate;  // 벽 관통
@@ -22,6 +23,16 @@ public class PlayerBullet : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
 
         rigid.velocity = transform.right * moveSpeed;
+
+        StartCoroutine(DieRoutine());
+    }
+
+    private IEnumerator DieRoutine()
+    {
+        yield return new WaitForSeconds(lifeTime);
+
+        Instantiate(dieEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

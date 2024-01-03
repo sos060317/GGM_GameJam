@@ -15,6 +15,11 @@ public class CameraShake : MonoBehaviour
 
     public void ShakeCamera(float intensity, float time)
     {
+        if (shakeTime > time)
+        {
+            return;
+        }
+
         CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin =
             cinemachine.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
