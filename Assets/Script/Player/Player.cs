@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
     public float moveSpeed;
     public float maxHealth;
+    public float rushSkillScanRange;
+    public LayerMask enemyLayer;
     public Transform swordParent;
 
     #region 대쉬 관련 스탯
@@ -155,13 +158,49 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
-        gameObject.layer = 8;
-
         isDash = false;
 
         dashTimer = dashCoolTime;
 
         rigid.velocity = Vector3.zero;
+    }
+
+    public void RushSkill(SkillBase skillBase, float damage)
+    {
+        StartCoroutine(RushSkillRoutine(skillBase, damage));
+    }
+
+    private IEnumerator RushSkillRoutine(SkillBase skillBase, float damage)
+    {
+        float timer = 0f;
+
+        List<Collider2D> enemise = new List<Collider2D>();
+
+        moveDirection.x = Input.GetAxisRaw("Horizontal");
+        moveDirection.y = Input.GetAxisRaw("Vertical");
+
+        rigid.velocity = moveDirection.normalized * dashSpeed;
+
+        while (timer <= dashTime)
+        {
+            Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, rushSkillScanRange, enemyLayer);
+
+            foreach (var target in targets)
+            {
+                enemise.Add(target);
+            }
+
+            enemise.Distinct();
+
+            timer += Time.deltaTime;
+
+            yield return null;
+        }
+
+        foreach (var enemy in enemise)
+        {
+            enemy.GetComponent<EnemyBase>().OnDamage(damage);
+        }
     }
 
     private void AnimationUpdate()
@@ -177,5 +216,12 @@ public class Player : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+
+        Gizmos.DrawWireSphere(transform.position, rushSkillScanRange);
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b482c88b4bf0aaf48ba65aa017bf60a7
+guid: 5e73334de2cf2f4498490b6d26c45b50
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PlayerWalk_0
+      name: PlaerWalk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd84e188369f4b940958d5c3f562d9b4
-      internalID: -1712686145
+      spriteID: 05d5fdf9c041fda4bbaf395d62ac298a
+      internalID: -859386547
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk_1
+      name: PlaerWalk_1
       rect:
         serializedVersion: 2
         x: 32
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c2cb28687624ea42b098f6098996401
-      internalID: 1495371300
+      spriteID: 05205555e6d2b6946875e50abe13a6ca
+      internalID: 127753611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk_2
+      name: PlaerWalk_2
       rect:
         serializedVersion: 2
         x: 64
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64a7e45fe7fd8084ba6d93d8f4dfa28c
-      internalID: -457316848
+      spriteID: fc873386c8da76f45b93a7b040af3224
+      internalID: 154875130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayerWalk_3
+      name: PlaerWalk_3
       rect:
         serializedVersion: 2
         x: 96
@@ -194,8 +194,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3772a8cc2c3d5c3438e2486c85b040e0
-      internalID: 1555882546
+      spriteID: 0fd872ed47fff1e4ba00069d351d7425
+      internalID: -1798786688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaerWalk_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2853809bba67b24db681e000099fd84
+      internalID: 54419630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaerWalk_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cb0f692333ee474a853a2e2876d9622
+      internalID: 213285900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaerWalk_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edf54b493b461b540bd7b9d57639097d
+      internalID: -1521379158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaerWalk_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db3cd4158c830e4d953c3bf11ab7d42
+      internalID: -1039715938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaerWalk_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afaa3b48526d5e14188fffcddef1d56f
+      internalID: -1077447857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlaerWalk_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfe7480bec4aec146ad9a14a5d78f434
+      internalID: 338447626
       vertices: []
       indices: 
       edges: []
@@ -211,10 +337,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PlayerWalk_0: -1712686145
-      PlayerWalk_1: 1495371300
-      PlayerWalk_2: -457316848
-      PlayerWalk_3: 1555882546
+      PlaerWalk_0: -859386547
+      PlaerWalk_1: 127753611
+      PlaerWalk_2: 154875130
+      PlaerWalk_3: -1798786688
+      PlaerWalk_4: 54419630
+      PlaerWalk_5: 213285900
+      PlaerWalk_6: -1521379158
+      PlaerWalk_7: -1039715938
+      PlaerWalk_8: -1077447857
+      PlaerWalk_9: 338447626
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

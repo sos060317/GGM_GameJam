@@ -91,6 +91,29 @@ public abstract class EnemyBase : MonoBehaviour
         GameManager.Instance.CameraShake(30, 0.1f);
     }
 
+    // Á×À¸¸é true ¾È Á×À¸¸é false¸¦ ¹ÝÈ¯
+    public bool OnDamageCheck(float damage)
+    {
+        curHealth -= damage;
+
+        if (curHealth <= 0)
+        {
+            GameManager.Instance.CameraShake(20, 0.4f);
+            GameManager.Instance.ShowEffectImage(0.1f, 1);
+            Instantiate(dieEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            return true;
+        }
+
+        StartCoroutine(KnockbackRoutine());
+
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
+
+        GameManager.Instance.CameraShake(30, 0.1f);
+
+        return false;
+    }
+
     private IEnumerator KnockbackRoutine()
     {
         Vector2 dir = transform.position - target.position;
