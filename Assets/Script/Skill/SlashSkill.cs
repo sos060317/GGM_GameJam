@@ -18,9 +18,13 @@ public class SlashSkill : SkillBase
     private IEnumerator SlashSkillRoutine()
     {
         GameManager.Instance.curPlayer.sword.attackEvent += ShootBullet;
+
+        yield return new WaitForSeconds(skillTime);
+
+        GameManager.Instance.curPlayer.sword.attackEvent -= ShootBullet;
     }
 
-    private void ShootBullet(float damage)
+    private void ShootBullet()
     {
 
     }
