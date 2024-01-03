@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerTrailMaterial
+  m_Name: Player Sword Material
   m_Shader: {fileID: -6465566751694194690, guid: c04361289cc6b0d4a8a2f3da5ed14aea, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -39,5 +39,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 5.992157, g: 0.5647059, b: 0.5647059, a: 1}
+    - _Color: {r: 9.734288, g: 0.91736746, b: 0.91736746, a: 1}
   m_BuildTextureStacks: []

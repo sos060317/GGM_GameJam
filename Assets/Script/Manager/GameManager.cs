@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
             qSkill = Instantiate(qSkillDetails.skillPrefab);
             qSkillPanel.Init(qSkillDetails);
             qSkillTimer = qSkillDetails.coolTime;
+            isEmptyQSkill = false;
             return;
         }
 
@@ -130,6 +131,7 @@ public class GameManager : MonoBehaviour
             eSkill = Instantiate(eSkillDetails.skillPrefab);
             eSkillPanel.Init(eSkillDetails);
             eSkillTimer = eSkillDetails.coolTime;
+            isEmptyESkill = false;
             return;
         }
     }
