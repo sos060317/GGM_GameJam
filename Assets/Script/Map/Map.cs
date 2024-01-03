@@ -9,14 +9,6 @@ public class Map : MonoBehaviour
     public MapState mapState;
     //public RoomEffect currentEffect;
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            MapManager.Instance.OpenMap();
-        }
-    }
-
     public void StartGimmick()
     {
         switch (mapState) 
