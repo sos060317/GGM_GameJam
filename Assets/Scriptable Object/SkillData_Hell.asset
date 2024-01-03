@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27701485930bc642bfd408c5f4ad9bd, type: 3}
+  m_Name: SkillData_Hell
+  m_EditorClassIdentifier: 
+  skillImage: {fileID: 889904397, guid: 25d012807625f2843a76f0a7be4c9b39, type: 3}
+  coolTime: 15
+  price: 50
+  damage: 10
+  skillPrefab: {fileID: 6361000289103442507, guid: a2cfdc1530b3b494ab4d06e7186b7613, type: 3}

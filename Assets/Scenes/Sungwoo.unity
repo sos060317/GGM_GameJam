@@ -2410,7 +2410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2465cd3eb87c48e4d956a1ddc8a41066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillDetails: {fileID: 11400000, guid: f0ee717eca0aae34b9d035bc315635d9, type: 2}
+  skillDetails: {fileID: 11400000, guid: eb181b204800cac4b8e2ccb6b8cd2681, type: 2}
 --- !u!50 &1866801843
 Rigidbody2D:
   serializedVersion: 4
