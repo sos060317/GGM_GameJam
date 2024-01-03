@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
         MoveUpdate();
         DashUpdate();
         SwordRotationUpdate();
+        HealthBarUpdate();
         AnimationUpdate();
     }
 
@@ -219,6 +220,11 @@ public class Player : MonoBehaviour
         }
 
         rigid.velocity = Vector3.zero;
+    }
+
+    private void HealthBarUpdate()
+    {
+        GameManager.Instance.SetHealthUI(curHealth, maxHealth); 
     }
 
     private void AnimationUpdate()

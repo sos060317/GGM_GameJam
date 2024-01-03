@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CameraShake cameraShake;
 
     [SerializeField] private Image effectImage;
+
+    [SerializeField] private Image healthImage;
+    [SerializeField] private TextMeshProUGUI healthText;
 
     public PlayerLevelData[] playerLevelDatas;
 
@@ -245,5 +249,12 @@ public class GameManager : MonoBehaviour
         eSkillPanel.gameObject.SetActive(true);
 
         eSkillPanel.Init(null);
+    }
+
+    public void SetHealthUI(float curHealth, float maxHealth)
+    {
+        healthText.text = curHealth + " / " + maxHealth;
+
+        healthImage.fillAmount = curHealth / maxHealth;
     }
 }

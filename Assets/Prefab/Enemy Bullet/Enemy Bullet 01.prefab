@@ -119,6 +119,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b74b8b48b91dd634aaab186886afaa1c, type: 3}
   sec: 0.6
   isRoop: 1
+  shakeAmount: 0
+  shakeTime: 0
 --- !u!114 &5468241925033547153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 6
   hitEffect: {fileID: 4726097688221157032, guid: 77de00183ccccb14bb3c4c67285d791d, type: 3}
+  damage: 3
 --- !u!50 &5468241925033547154
 Rigidbody2D:
   serializedVersion: 4
