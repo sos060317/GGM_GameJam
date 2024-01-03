@@ -14,7 +14,8 @@ public abstract class EnemyBase : MonoBehaviour
 
     #endregion
 
-    public Effect dieEffect;
+    public GameObject dieEffect;
+    public GameObject hitEffect;
 
     #region 공격 관련 스탯
 
@@ -26,6 +27,7 @@ public abstract class EnemyBase : MonoBehaviour
     #endregion
 
     private float attackTimer;
+    private float curHealth;
 
     protected Transform target;
 
@@ -42,6 +44,8 @@ public abstract class EnemyBase : MonoBehaviour
         agent.speed = moveSpeed;
 
         rigid = GetComponent<Rigidbody2D>();
+
+        curHealth = maxHealth;
     }
 
     private void Update()
@@ -69,9 +73,21 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void OnDamage(float damage)
     {
+        curHealth -= damage;
+
+        if (curHealth <= 0)
+        {
+            GameManager.Instance.CameraShake(20, 0.4f);
+            Instantiate(dieEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            return;
+        }
+
         StartCoroutine(KnockbackRoutine());
 
-        GameManager.Instance.CameraShake(15, 0.1f);
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
+
+        GameManager.Instance.CameraShake(20, 0.1f);
     }
 
     private IEnumerator KnockbackRoutine()
