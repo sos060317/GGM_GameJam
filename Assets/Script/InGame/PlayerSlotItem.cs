@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatItem : MonoBehaviour
+public class PlayerSlotItem : MonoBehaviour
 {
     private bool isEnter;
 
     private void Start()
     {
-        // 최대레벨이면 삭제
-        if (GameManager.Instance.curPlayerLevel >= GameManager.Instance.playerLevelDatas.Length)
+        // E 스킬이 해금되어있다면 삭제
+        if (GameManager.Instance.isCanESkill)
         {
             Destroy(gameObject);
         }
@@ -19,7 +19,7 @@ public class PlayerStatItem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F) && isEnter)
         {
-            GameManager.Instance.PlayerLevelUp();
+            GameManager.Instance.SkillSlotUpgrade();
             Destroy(gameObject);
         }
     }

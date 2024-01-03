@@ -21,10 +21,17 @@ public class EnemyBullet : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // 플레이어 데미지 입히기
+
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
+
+            Destroy(gameObject);
         }
 
-        Instantiate(hitEffect, transform.position, Quaternion.identity);
+        if (collision.CompareTag("Wall"))
+        {
+            Instantiate(hitEffect, transform.position, Quaternion.identity);
 
-        Destroy(gameObject);         
+            Destroy(gameObject);
+        }
     }
 }

@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     private float qSkillTimer;
     private float eSkillTimer;
 
-    private bool isCanESkill;       // E 스킬 해금 관련 변수
+    [HideInInspector] public bool isCanESkill = false;       // E 스킬 해금 관련 변수
     private bool isEmptyQSkill = true;
     private bool isEmptyESkill = true;
 
@@ -109,10 +109,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GetSkillItem(SkillDetails skillDetails)
+    public void GetSkillItem(SkillDetails skillDetails, GameObject item)
     {
         // Q 스킬과 E 스킬이 꽉 차있다면 리턴
-        if (!isEmptyESkill && !isEmptyQSkill)
+        if (!isEmptyESkill && (!isEmptyQSkill || !isCanESkill))
         {
             Debug.Log("꽉 참");
 
@@ -127,17 +127,19 @@ public class GameManager : MonoBehaviour
             qSkillPanel.Init(qSkillDetails);
             qSkillTimer = qSkillDetails.coolTime;
             isEmptyQSkill = false;
+            Destroy(item);
             return;
         }
 
         // E 스킬이 비어있다면
-        if (isEmptyESkill)
+        if (isEmptyESkill && isCanESkill)
         {
             eSkillDetails = skillDetails;
             eSkill = Instantiate(eSkillDetails.skillPrefab);
             eSkillPanel.Init(eSkillDetails);
             eSkillTimer = eSkillDetails.coolTime;
             isEmptyESkill = false;
+            Destroy(item);
             return;
         }
     }
@@ -229,5 +231,19 @@ public class GameManager : MonoBehaviour
         curPlayer.Init(playerLevelDatas[curPlayerLevel]);
 
         curPlayerLevel++;
+    }
+
+    public void SkillSlotUpgrade()
+    {
+        if (isCanESkill)
+        {
+            return;
+        }
+
+        isCanESkill = true;
+
+        eSkillPanel.gameObject.SetActive(true);
+
+        eSkillPanel.Init(null);
     }
 }

@@ -6,15 +6,29 @@ public class SkillItem : MonoBehaviour
 {
     public SkillDetails skillDetails;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private bool isEnter;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && isEnter)
+        {
+            GameManager.Instance.GetSkillItem(skillDetails, gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                GameManager.Instance.GetSkillItem(skillDetails);
-                Destroy(gameObject);
-            }
+            isEnter = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isEnter = false;
         }
     }
 }
