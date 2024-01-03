@@ -60,7 +60,7 @@ public class MapManager : MonoBehaviour
             
 
             if (randomMap == previousMap)
-                return;
+                continue;
 
             currentRoomNumber++;
             randRoomArray.Add(Instantiate(roomArray[randomMap], Vector3.zero, Quaternion.identity));
