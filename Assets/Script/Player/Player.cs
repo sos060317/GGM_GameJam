@@ -95,15 +95,6 @@ public class Player : MonoBehaviour
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
 
-        if (moveDirection.x < 0)
-        {
-            sr.flipX = true;
-        }
-        else if (moveDirection.x > 0)
-        {
-            sr.flipX = false;
-        }
-
         if (moveDirection != Vector2.zero)
         {
             isWalk = true;
@@ -124,10 +115,12 @@ public class Player : MonoBehaviour
         if (Mathf.Abs(angle) > 90)
         {
             swordParent.localScale = new Vector3(1, -1, 1);
+            sr.flipX = true;
         }
         else
         {
             swordParent.localScale = new Vector3(1, 1, 1);
+            sr.flipX = false;
         }
         swordParent.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
@@ -207,7 +200,7 @@ public class Player : MonoBehaviour
                 enemise.Add(target);
             }
 
-            enemise.Distinct();
+            enemise = enemise.Distinct().ToList();
 
             timer += Time.deltaTime;
 
@@ -233,16 +226,6 @@ public class Player : MonoBehaviour
         anim.SetBool("isWalk", isWalk);
     }
 
-    public void OnDamge(float damage)
-    {
-        curHealth -= damage;
-
-        if (curHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
     public void Init(PlayerLevelData data)
     {
         maxHealth = data.health;
@@ -252,7 +235,7 @@ public class Player : MonoBehaviour
 
     public void OnDamege(float damage)
     {
-        if (isInvincibility)
+        if (isInvincibility || isDash)
         {
             return;
         }
@@ -266,13 +249,15 @@ public class Player : MonoBehaviour
             return;
         }
 
+        GameManager.Instance.CameraShake(20, 0.3f);
+
         StartCoroutine(HitRoutine());
     }
 
     private IEnumerator HitRoutine()
     {
         isInvincibility = true;
-        sr.color = new Color(1, 1, 1, 0.5f);
+        sr.color = new Color(1, 1, 1, 0.2f);
 
         yield return new WaitForSeconds(invincibilityTime);
 

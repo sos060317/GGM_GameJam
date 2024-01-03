@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerLevelData_03
   m_EditorClassIdentifier: 
   health: 120
-  damage: 15
+  damage: 30
   moveSpeed: 8

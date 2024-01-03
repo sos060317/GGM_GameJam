@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SkillData_Rush
   m_EditorClassIdentifier: 
   skillImage: {fileID: 21300000, guid: bb51334c6930f864abac38001f7bdf6e, type: 3}
-  coolTime: 30
-  price: 3
-  damage: 1000
+  coolTime: 8
+  price: 40
+  damage: 50
   skillPrefab: {fileID: 1356968872160163785, guid: b42be5095a7e1734cac4391521117d55, type: 3}

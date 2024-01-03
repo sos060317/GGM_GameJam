@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     public Player curPlayer;
 
+    public int gold;
+
     [SerializeField] private SkillPanel qSkillPanel;
     [SerializeField] private SkillPanel eSkillPanel;
 
@@ -67,8 +69,6 @@ public class GameManager : MonoBehaviour
         eSkillPanel.Init(null);
 
         eSkillPanel.gameObject.SetActive(false);
-
-        PlayerLevelUp();
     }
 
     private void Update()

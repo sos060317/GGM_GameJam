@@ -9,7 +9,7 @@ public class SkillDetails : ScriptableObject
 
     public float coolTime;
 
-    public float price;
+    public int price;
 
     public float damage;
 

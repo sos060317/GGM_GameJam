@@ -7,6 +7,8 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private Effect hitEffect;
 
+    [SerializeField] private float damage;
+
     private Rigidbody2D rigid;
 
     private void Start()
@@ -21,6 +23,8 @@ public class EnemyBullet : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // 플레이어 데미지 입히기
+
+            GameManager.Instance.curPlayer.OnDamege(damage);
 
             Instantiate(hitEffect, transform.position, Quaternion.identity);
 
