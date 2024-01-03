@@ -11,5 +11,7 @@ public class SkillDetails : ScriptableObject
 
     public float price;
 
+    public float damage;
+
     public SkillBase skillPrefab;
 }

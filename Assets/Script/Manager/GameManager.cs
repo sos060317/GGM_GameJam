@@ -72,13 +72,13 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && qSkill != null && qSkillTimer > qSkillDetails.coolTime)
         {
-            qSkill.UseSkill();
+            qSkill.UseSkill(qSkillDetails);
             qSkillTimer = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.E) && eSkill != null && eSkillTimer > eSkillDetails.coolTime)
         {
-            eSkill.UseSkill();
+            eSkill.UseSkill(eSkillDetails);
             eSkillTimer = 0;
         }
     }

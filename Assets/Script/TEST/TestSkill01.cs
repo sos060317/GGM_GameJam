@@ -6,7 +6,7 @@ public class TestSkill01 : SkillBase
 {
     public GameObject testBullet;
 
-    public override void UseSkill()
+    public override void UseSkill(SkillDetails skillDetails)
     {
         int bulletCount = 3;
 

@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rigid;
     private SpriteRenderer sr;
+    private TrailRenderer tr;
 
     private Vector2 moveDirection;
 
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        tr = GetComponent<TrailRenderer>();
 
         curHealth = maxHealth;
     }
@@ -59,7 +61,7 @@ public class Player : MonoBehaviour
     private void InputUpdate()
     {
         // Dash
-        if (Input.GetKeyDown(dashKey) && canDash)
+        if (Input.GetKeyDown(dashKey) && canDash && !isDash)
         {
             StartCoroutine(DashRoutine());
         }
@@ -141,6 +143,11 @@ public class Player : MonoBehaviour
         moveDirection.x = Input.GetAxisRaw("Horizontal");
         moveDirection.y = Input.GetAxisRaw("Vertical");
 
+        if (moveDirection == Vector2.zero)
+        {
+            moveDirection.y = 1;
+        }
+
         rigid.velocity = moveDirection.normalized * dashSpeed;
 
         while (timer <= dashTime)
@@ -172,14 +179,21 @@ public class Player : MonoBehaviour
 
     private IEnumerator RushSkillRoutine(SkillBase skillBase, float damage)
     {
+        isDash = true;
+        tr.emitting = true;
+
+        GameManager.Instance.ShowEffectImage(0.1f, 1);
+
         float timer = 0f;
 
         List<Collider2D> enemise = new List<Collider2D>();
 
-        moveDirection.x = Input.GetAxisRaw("Horizontal");
-        moveDirection.y = Input.GetAxisRaw("Vertical");
+        Vector2 mousePos = Input.mousePosition;
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(mousePos);
 
-        rigid.velocity = moveDirection.normalized * dashSpeed;
+        Vector2 dir = mouseWorldPos - transform.position;
+
+        rigid.velocity = dir.normalized * dashSpeed;
 
         while (timer <= dashTime)
         {
@@ -197,10 +211,18 @@ public class Player : MonoBehaviour
             yield return null;
         }
 
+        isDash = false;
+        tr.emitting = false;
+
         foreach (var enemy in enemise)
         {
-            enemy.GetComponent<EnemyBase>().OnDamage(damage);
+            if (enemy.GetComponent<EnemyBase>().OnDamageCheck(damage))
+            {
+                GameManager.Instance.SkillCooltimeReset(skillBase);
+            }
         }
+
+        rigid.velocity = Vector3.zero;
     }
 
     private void AnimationUpdate()

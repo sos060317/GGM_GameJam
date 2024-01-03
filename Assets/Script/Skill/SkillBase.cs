@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class SkillBase : MonoBehaviour
 {
-    public abstract void UseSkill();
+    public abstract void UseSkill(SkillDetails skillDetails);
 }
