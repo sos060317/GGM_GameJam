@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TextSword : MonoBehaviour
 {
+    public float scanRange;
+
+    public LayerMask enemyLayer;
+
     private bool isAttack;
 
     private Animator anim;
@@ -27,8 +31,25 @@ public class TextSword : MonoBehaviour
         }
     }
 
+    private void AttackDamage()
+    {
+        Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, scanRange, enemyLayer);
+
+        foreach (var target in targets)
+        {
+            target.GetComponent<EnemyBase>().OnDamage(10);
+        }
+    }
+
     private void AttackEnd()
     {
         isAttack = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(transform.position, scanRange);
     }
 }

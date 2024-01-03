@@ -30,6 +30,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected Transform target;
 
     NavMeshAgent agent;
+    Rigidbody2D rigid;
 
     private void Start()
     {
@@ -39,6 +40,8 @@ public abstract class EnemyBase : MonoBehaviour
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         agent.speed = moveSpeed;
+
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -62,6 +65,26 @@ public abstract class EnemyBase : MonoBehaviour
         }
 
         attackTimer += Time.deltaTime;
+    }
+
+    public void OnDamage(float damage)
+    {
+        StartCoroutine(KnockbackRoutine());
+
+        GameManager.Instance.CameraShake(15, 0.1f);
+    }
+
+    private IEnumerator KnockbackRoutine()
+    {
+        Vector2 dir = transform.position - target.position;
+
+        rigid.AddForce(dir.normalized * 10, ForceMode2D.Impulse);
+
+        Debug.Log("공격받음");
+
+        yield return new WaitForSeconds(0.1f);
+
+        rigid.velocity = Vector2.zero;
     }
 
     protected abstract void ShootBullet();
