@@ -11,4 +11,16 @@ public class NomalEnemy01 : EnemyBase
 
         Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 0, angle - 180));
     }
+
+    private void AttackStart()
+    {
+        canMove = false;
+        agent.isStopped = true;
+    }
+
+    private void AttackEnd()
+    {
+        canMove = true;
+        agent.isStopped = false;
+    }
 }
