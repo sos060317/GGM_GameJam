@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SkillPanel eSkillPanel;
 
     [SerializeField] private CameraShake cameraShake;
+
+    [SerializeField] private Image effectImage;
 
     private SkillBase qSkill;
     private SkillBase eSkill;
@@ -131,5 +134,60 @@ public class GameManager : MonoBehaviour
     public void CameraShake(float intensity, float time)
     {
         cameraShake.ShakeCamera(intensity, time);
+    }
+
+    Coroutine effectImageRoutine;
+    public void ShowEffectImage(float time, float fadeAmount)
+    {
+        if (effectImageRoutine != null)
+        {
+            StopCoroutine(effectImageRoutine);
+        }
+
+        effectImageRoutine = StartCoroutine(FadeOutObject(effectImage, time, fadeAmount));
+    }
+
+    private IEnumerator FadeOutObject(Image _image, float time, float fadeAmount)
+    {
+        if (time == 0)
+        {
+            yield return null;
+        }
+
+        float targetAlpha = fadeAmount;
+        float curAlpha = 0;
+        float temp = 0;
+
+        float fadeInOutTime = time / 2;
+
+        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, curAlpha);
+
+        while (temp <= fadeInOutTime)
+        {
+            curAlpha += Time.deltaTime * targetAlpha / fadeInOutTime;
+
+            _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, curAlpha);
+
+            temp += Time.deltaTime;
+
+            yield return null;
+        }
+
+        curAlpha = fadeAmount;
+
+        temp = 0;
+
+        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, curAlpha);
+
+        while (temp <= fadeInOutTime)
+        {
+            curAlpha -= Time.deltaTime / fadeInOutTime;
+
+            _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, curAlpha);
+
+            temp += Time.deltaTime;
+
+            yield return null;
+        }
     }
 }

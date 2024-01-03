@@ -78,6 +78,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (curHealth <= 0)
         {
             GameManager.Instance.CameraShake(20, 0.4f);
+            GameManager.Instance.ShowEffectImage(0.1f, 1);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return;
@@ -87,7 +88,7 @@ public abstract class EnemyBase : MonoBehaviour
 
         Instantiate(hitEffect, transform.position, Quaternion.identity);
 
-        GameManager.Instance.CameraShake(20, 0.1f);
+        GameManager.Instance.CameraShake(30, 0.1f);
     }
 
     private IEnumerator KnockbackRoutine()
