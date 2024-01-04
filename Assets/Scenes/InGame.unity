@@ -927,14 +927,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1610ad85bc17f04eb92b1a217c01e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomNumber: 4
+  roomNumber: 40
   startMap: {fileID: 6068706420811453502, guid: f48c518992acedf469f78714848c188f, type: 3}
-  bossMap: {fileID: 1768707526830616393, guid: 338c1954370f55f4a93376524a63f238, type: 3}
+  bossMap: {fileID: 6068706420811453502, guid: 4c87cb913d5c98747bed2ae18515b20b, type: 3}
+  shopMap: {fileID: 6068706420811453502, guid: 356573e2c06fb34488c2ea7fd53a549c, type: 3}
   roomArray:
   - {fileID: 6068706420811453502, guid: 66a9dff0f6bce2a4887d9670307b7b8a, type: 3}
   - {fileID: 6068706420811453502, guid: c976c406a64e2254094b934a1f076223, type: 3}
   - {fileID: 6068706420811453502, guid: c2a627fa061c19c409a9f1457b395e52, type: 3}
-  - {fileID: 5814438384422648865, guid: ab4c665756d5a534c92979c880e58eac, type: 3}
+  - {fileID: 6068706420811453502, guid: a2fb435f8bdb2de42b549fdc2e88ab89, type: 3}
 --- !u!4 &811100134
 Transform:
   m_ObjectHideFlags: 0
@@ -1949,6 +1950,7 @@ MonoBehaviour:
     m_Bits: 64
   swordParent: {fileID: 267948129}
   sword: {fileID: 640103249}
+  light: {fileID: 0}
   dashTime: 0.08
   dashKey: 324
   dashCoolTime: 1
