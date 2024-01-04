@@ -167,6 +167,8 @@ MonoBehaviour:
   attackMinRate: 7
   attackMaxRate: 12
   bulletPrefab: {fileID: 3506750808495873303, guid: 8cf5dfd96cb49174d80e13c05bcc9167, type: 3}
+  hitSound: {fileID: 8300000, guid: 6e63bf8e371b96c47a5d91221c871deb, type: 3}
+  dieSound: {fileID: 8300000, guid: 4936ffe6d9d6e5643ac94d99952bfd1e, type: 3}
 --- !u!95 &7068698296968192520
 Animator:
   serializedVersion: 5

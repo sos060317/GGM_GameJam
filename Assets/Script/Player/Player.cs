@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     public Transform swordParent;
     public TextSword sword;
     public Light2D light;
+    public AudioClip dashSound;
 
     #region 대쉬 관련 스탯
 
@@ -70,6 +71,7 @@ public class Player : MonoBehaviour
         HealthBarUpdate();
         AnimationUpdate();
         LightUpdate();
+        HealthUpdate();
     }
 
     private void InputUpdate()
@@ -157,6 +159,8 @@ public class Player : MonoBehaviour
         }
 
         rigid.velocity = moveDirection.normalized * dashSpeed;
+
+        SoundManager.Instance.PlaySound(dashSound);
 
         while (timer <= dashTime)
         {
@@ -247,6 +251,11 @@ public class Player : MonoBehaviour
     private void LightUpdate()
     {
         light.intensity = curHealth / maxHealth;
+    }
+
+    private void HealthUpdate()
+    {
+        curHealth -= Time.deltaTime * GameManager.Instance.playerHealthMultiply;
     }
 
     public void Init(PlayerLevelData data)

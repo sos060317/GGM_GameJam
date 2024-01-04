@@ -27,6 +27,9 @@ public abstract class EnemyBase : MonoBehaviour
 
     #endregion
 
+    public AudioClip hitSound;
+    public AudioClip dieSound;
+
     protected float attackTimer;
     protected float attackRate;
     private float curHealth;
@@ -97,10 +100,13 @@ public abstract class EnemyBase : MonoBehaviour
         {
             GameManager.Instance.CameraShake(20, 0.4f);
             GameManager.Instance.ShowEffectImage(0.1f, 1);
+            SoundManager.Instance.PlaySound(dieSound);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return;
         }
+
+        SoundManager.Instance.PlaySound(hitSound, Random.Range(0.8f, 1.1f));
 
         StartCoroutine(KnockbackRoutine());
 
@@ -118,10 +124,13 @@ public abstract class EnemyBase : MonoBehaviour
         {
             GameManager.Instance.CameraShake(20, 0.4f);
             GameManager.Instance.ShowEffectImage(0.1f, 1);
+            SoundManager.Instance.PlaySound(dieSound);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
             return true;
         }
+
+        SoundManager.Instance.PlaySound(hitSound, Random.Range(0.8f, 1.1f));
 
         StartCoroutine(KnockbackRoutine());
 

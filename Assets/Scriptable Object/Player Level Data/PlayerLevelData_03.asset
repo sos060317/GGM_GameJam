@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7683eec7c1c34448be97d10bc525b72, type: 3}
   m_Name: PlayerLevelData_03
   m_EditorClassIdentifier: 
-  health: 120
+  health: 150
   damage: 30
   moveSpeed: 8

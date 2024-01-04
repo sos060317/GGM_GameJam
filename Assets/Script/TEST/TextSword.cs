@@ -13,6 +13,8 @@ public class TextSword : MonoBehaviour
 
     public float damage;
 
+    public AudioClip slashSound;
+
     private bool isAttack;
 
     private Animator anim;
@@ -32,6 +34,7 @@ public class TextSword : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !isAttack)
         {
             isAttack = true;
+            SoundManager.Instance.PlaySound(slashSound, UnityEngine.Random.Range(0.7f, 1.2f));
             anim.SetTrigger("Attack");
             attackEvent?.Invoke();
         }

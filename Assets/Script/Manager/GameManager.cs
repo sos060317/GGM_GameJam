@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     public PlayerLevelData[] playerLevelDatas;
 
+    public float playerHealthMultiply;
+
     [HideInInspector] public int curPlayerLevel = 0;
 
     private SkillBase qSkill;
@@ -261,7 +263,7 @@ public class GameManager : MonoBehaviour
 
     public void SetHealthUI(float curHealth, float maxHealth)
     {
-        healthText.text = curHealth.ToString();
+        healthText.text = Mathf.Ceil(curHealth).ToString();
 
         healthImage.fillAmount = curHealth / maxHealth;
     }
