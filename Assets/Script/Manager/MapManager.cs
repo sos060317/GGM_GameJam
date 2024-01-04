@@ -77,21 +77,44 @@ public class MapManager : MonoBehaviour
             }
         }
 
-        randRoomArray.Add(Instantiate(bossMap, Vector3.zero, Quaternion.identity));
-        randRoomArray[randRoomArray.Count - 1].SetActive(false);
-        randRoomArray[randRoomArray.Count - 1].GetComponent<Map>().mapState = MapState.Normal;
+        //randRoomArray.Add(Instantiate(bossMap, Vector3.zero, Quaternion.identity));
+        //randRoomArray[randRoomArray.Count - 1].SetActive(false);
+        //randRoomArray[randRoomArray.Count - 1].GetComponent<Map>().mapState = MapState.Normal;
     }
 
     public void OpenMap()
     {
-        if (currentMap > randRoomArray.Count)
+        if (currentMap >= randRoomArray.Count - 1)
+        {
+            Debug.Log("ddd");
+            bossMap.SetActive(true);
+            GameManager.Instance.curPlayer.transform.position = bossMap.transform.GetChild(1).position;
+            randRoomArray[currentMap].SetActive(false);
             return;
+        }
 
-        Debug.Log(randRoomArray[currentMap].GetComponent<Map>().mapState);
         randRoomArray[currentMap + 1].SetActive(true);
-        randRoomArray[currentMap].SetActive(false);
         GameManager.Instance.curPlayer.transform.position
             = randRoomArray[currentMap + 1].GetComponent<Map>().enterPoint.position;
+        randRoomArray[currentMap].SetActive(false);
         currentMap++;
+
+
+
+
+        //if (currentMap > randRoomArray.Count)
+        //{
+        //    bossMap.SetActive(true);
+        //    GameManager.Instance.curPlayer.transform.position = bossMap.transform.GetChild(1).position;
+        //    randRoomArray[currentMap].SetActive(false);
+        //    return;
+        //}
+
+        //Debug.Log(randRoomArray[currentMap].GetComponent<Map>().mapState);
+        //randRoomArray[currentMap + 1].SetActive(true);
+        //randRoomArray[currentMap].SetActive(false);
+        //GameManager.Instance.curPlayer.transform.position
+        //    = randRoomArray[currentMap + 1].GetComponent<Map>().enterPoint.position;
+        //currentMap++;
     }
 }
