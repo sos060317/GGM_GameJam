@@ -122,17 +122,17 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.233868, y: 0.6624084}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b771e1d8f8455d040bf69652924f73ea
-      internalID: 109425129
+      spriteID: b6c361395cf2bb84c80b5e76656cb3ae
+      internalID: 2007752320
       vertices: []
       indices: 
       edges: []
@@ -141,19 +141,19 @@ TextureImporter:
       name: PlayerSword_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 64
         y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.233868, y: 0.6624084}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca65b4f3c384cf14fafd815732279eea
-      internalID: 1008426944
+      spriteID: b0131455f18ca884d8911ba62aad2e0c
+      internalID: -584869477
       vertices: []
       indices: 
       edges: []
@@ -162,19 +162,19 @@ TextureImporter:
       name: PlayerSword_2
       rect:
         serializedVersion: 2
-        x: 64
+        x: 128
         y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.233868, y: 0.6624084}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 782e980ae0c5cff4e82bd212ece66de0
-      internalID: -777449059
+      spriteID: c32a969597451d048947e8d3d0b959b6
+      internalID: 850995800
       vertices: []
       indices: 
       edges: []
@@ -183,19 +183,103 @@ TextureImporter:
       name: PlayerSword_3
       rect:
         serializedVersion: 2
-        x: 96
+        x: 192
         y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.233868, y: 0.6624084}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48c8cea03547d8c499c3c24641dc0e7b
-      internalID: 472276014
+      spriteID: 0c1b0fcc0843bff46a271ffe57c10a4e
+      internalID: -296186917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerSword_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.233868, y: 0.6624084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f57a788dd8123c8468daeefced8e6e01
+      internalID: 2084089630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerSword_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.233868, y: 0.6624084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dd2247467c569746af647b6f90f5138
+      internalID: 324621981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerSword_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.233868, y: 0.6624084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a3d7cf12a2903a4d853079994eaba8b
+      internalID: 436983416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerSword_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 9
+      pivot: {x: 0.233868, y: 0.6624084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97df3630765e71c4ba16364fa433f735
+      internalID: 1596105847
       vertices: []
       indices: 
       edges: []
@@ -213,10 +297,14 @@ TextureImporter:
     - texture: {fileID: 2800000, guid: 29edc52c1183114479e21bf688bca532, type: 3}
       name: _Emission
     nameFileIdTable:
-      PlayerSword_0: 109425129
-      PlayerSword_1: 1008426944
-      PlayerSword_2: -777449059
-      PlayerSword_3: 472276014
+      PlayerSword_0: 2007752320
+      PlayerSword_1: -584869477
+      PlayerSword_2: 850995800
+      PlayerSword_3: -296186917
+      PlayerSword_4: 2084089630
+      PlayerSword_5: 324621981
+      PlayerSword_6: 436983416
+      PlayerSword_7: 1596105847
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -9,6 +9,7 @@ public class PlayerBullet : MonoBehaviour
 
     [SerializeField] private bool isEnemyPenetrate; // 적 관통
     [SerializeField] private bool isWallPenetrate;  // 벽 관통
+    [SerializeField] private bool enemyBulletDestroy;   // 적 총알 닿으면 삭제
 
     [SerializeField] private Effect dieEffect;
 
@@ -56,6 +57,14 @@ public class PlayerBullet : MonoBehaviour
             {
                 Instantiate(dieEffect, transform.position, Quaternion.identity);
                 Destroy(gameObject);
+            }
+        }
+
+        if (collision.CompareTag("Enemy Bullet"))
+        {
+            if (enemyBulletDestroy)
+            {
+                Destroy(collision.gameObject);
             }
         }
     }

@@ -39,6 +39,8 @@ public class Boss : EnemyBase
             skillRate = Random.Range(skillMinTime, skillMaxTime);
             skillTimer = 0;
             isSkilling = true;
+            canMove = false;
+            agent.isStopped = true;
         }
 
         skillTimer += Time.deltaTime;
@@ -54,10 +56,45 @@ public class Boss : EnemyBase
 
     }
 
+    private void ThinkPattern()
+    {
+        StartCoroutine(Pattern01());
+    }
+
+    // 일반 총알 전체 공격 점점 돌아감
+    private IEnumerator Pattern01()
+    {
+        int shotCount = 10;
+        int bulletCount = 36;
+
+        float offset = .0f;
+
+        GameManager.Instance.CameraShake(20, 2f);
+
+        for (int i = 0; i < shotCount; i++)
+        {
+            for (int j = 0; j < bulletCount; j++)
+            {
+                Vector2 dir = new Vector2(Mathf.Cos(Mathf.PI * 2 * j / bulletCount + offset),
+                                          Mathf.Sin(Mathf.PI * 2 * j / bulletCount + offset));
+
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+                Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 0, angle));
+            }
+
+            offset += 1;
+
+            yield return new WaitForSeconds(0.3f);
+        }
+
+        isSkilling = false;
+        AttackEnd();
+    }
+
     private void AttackStart()
     {
-        canMove = false;
-        agent.isStopped = true;
+        ThinkPattern();
         anim.SetBool("AttackEnd", false);
     }
 
