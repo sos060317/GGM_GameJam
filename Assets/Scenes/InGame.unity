@@ -1345,11 +1345,6 @@ MonoBehaviour:
   roomArray:
   - {fileID: 6068706420811453502, guid: 66a9dff0f6bce2a4887d9670307b7b8a, type: 3}
   - {fileID: 6068706420811453502, guid: c976c406a64e2254094b934a1f076223, type: 3}
-  - {fileID: 6068706420811453502, guid: c2a627fa061c19c409a9f1457b395e52, type: 3}
-  - {fileID: 6068706420811453502, guid: a2fb435f8bdb2de42b549fdc2e88ab89, type: 3}
-  - {fileID: 6068706420811453502, guid: c3e5ca61af42b3345a1e2bc82a70ce0a, type: 3}
-  - {fileID: 6068706420811453502, guid: ecab6760fd3da9f46842d0de57ae4a10, type: 3}
-  - {fileID: 6068706420811453502, guid: 76424e4832e27004698a415f379611e6, type: 3}
 --- !u!4 &811100134
 Transform:
   m_ObjectHideFlags: 0
