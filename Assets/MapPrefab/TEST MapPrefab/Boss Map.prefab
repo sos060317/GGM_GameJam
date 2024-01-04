@@ -7207,6 +7207,7 @@ GameObject:
   - component: {fileID: 8447674826619540766}
   - component: {fileID: 2990418589389480311}
   - component: {fileID: 1581169047872498740}
+  - component: {fileID: 5793096865373816302}
   m_Layer: 0
   m_Name: Boss Map
   m_TagString: Untagged
@@ -7231,6 +7232,7 @@ Transform:
   - {fileID: 3892598757770526035}
   - {fileID: 3504158196131943184}
   - {fileID: 1403972421734632823}
+  - {fileID: 2512760984126240031}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7311,6 +7313,23 @@ PolygonCollider2D:
       - {x: -4, y: 5}
       - {x: 5, y: 5}
       - {x: 5, y: -5}
+--- !u!320 &5793096865373816302
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6068706420811453502}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings: []
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &6068706420832475625
 GameObject:
   m_ObjectHideFlags: 0
@@ -83715,3 +83734,65 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!1001 &2458772379689133347
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6068706420811453633}
+    m_Modifications:
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54129775805435966, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+      propertyPath: m_Name
+      value: Boss
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+--- !u!4 &2512760984126240031 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 54129775805435964, guid: 5e61f3ac937890a4d983af9cf3a62c95, type: 3}
+  m_PrefabInstance: {fileID: 2458772379689133347}
+  m_PrefabAsset: {fileID: 0}

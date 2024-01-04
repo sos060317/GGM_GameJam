@@ -57,6 +57,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
+        if (GameManager.Instance.isStop)
+        {
+            return;
+        }
+
         MoveUpdate();
         AttackUpdate();
     }
@@ -101,7 +106,7 @@ public abstract class EnemyBase : MonoBehaviour
 
         Instantiate(hitEffect, transform.position, Quaternion.identity);
 
-        GameManager.Instance.CameraShake(30, 0.1f);
+        GameManager.Instance.CameraShake(15, 0.1f);
     }
 
     // Á×À¸¸é true ¾È Á×À¸¸é false¸¦ ¹ÝÈ¯

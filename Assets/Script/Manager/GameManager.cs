@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public int gold;
 
+    public bool isStop;
+
     [SerializeField] private SkillPanel qSkillPanel;
     [SerializeField] private SkillPanel eSkillPanel;
 
