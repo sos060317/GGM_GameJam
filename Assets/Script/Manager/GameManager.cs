@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public int curPlayerLevel = 0;
 
+    public AudioClip bgm;
+
     private SkillBase qSkill;
     private SkillBase eSkill;
 
@@ -100,6 +102,8 @@ public class GameManager : MonoBehaviour
         titleButton.gameObject.SetActive(false);
 
         playableDirector = GetComponent<PlayableDirector>();
+
+        SoundManager.Instance.PlayMusic(bgm);
     }
 
     private void Update()

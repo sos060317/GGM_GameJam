@@ -1123,6 +1123,14 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2512760984126240026, guid: 4c87cb913d5c98747bed2ae18515b20b, type: 3}
+      propertyPath: readySound
+      value: 
+      objectReference: {fileID: 8300000, guid: f95fba3f16eef9a48b9c5b38150a341e, type: 3}
+    - target: {fileID: 2512760984126240026, guid: 4c87cb913d5c98747bed2ae18515b20b, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3f77f42081d62a54fb94ecced215a17b, type: 3}
     - target: {fileID: 5793096865373816302, guid: 4c87cb913d5c98747bed2ae18515b20b, type: 3}
       propertyPath: m_SceneBindings.Array.size
       value: 11
@@ -2704,6 +2712,7 @@ MonoBehaviour:
   restartButton: {fileID: 496293630}
   titleButton: {fileID: 320214074}
   curPlayerLevel: 0
+  bgm: {fileID: 8300000, guid: 6cbfb3adf6266a74b8d02bef30b9be5c, type: 3}
   playableDirector: {fileID: 878640249}
   isCanESkill: 0
   oxygen: {fileID: 0}

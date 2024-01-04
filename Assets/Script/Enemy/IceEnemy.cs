@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class IceEnemy : EnemyBase
 {
+    public AudioClip attackSound;
+
     protected override void ShootBullet()
     {
+        SoundManager.Instance.PlaySound(attackSound);
+
         int count = 4;
         float central = 20;
 
