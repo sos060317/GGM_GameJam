@@ -8,8 +8,7 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     [SerializeField] private int roomNumber; // 생성할 방의 개수
-    [SerializeField] private GameObject startMap; // 시작 맵
-    [SerializeField] private GameObject bossMap; // 보스 맵
+    [SerializeField] private GameObject startMap, bossMap, shopMap; // 시작 맵, 보스 맵, 상점 맵
     [SerializeField] private GameObject[] roomArray; // 랜덤으로 돌릴 모든 맵 프리팹
     private List<GameObject> randRoomArray = new List<GameObject>(); // 랜덤으로 돌려서 나온 맵들
     private int currentMap = 0; // 현재 진행중인 맵
@@ -57,17 +56,24 @@ public class MapManager : MonoBehaviour
         while (currentRoomNumber < roomNumber)
         {
             int randomMap = UnityEngine.Random.Range(0, roomArray.Length);
-            
-
+                
             if (randomMap == previousMap)
                 continue;
-                
+
             currentRoomNumber++;
+
             randRoomArray.Add(Instantiate(roomArray[randomMap], Vector3.zero, Quaternion.identity));
             randRoomArray[randRoomArray.Count - 1].GetComponent<Map>().mapState
                  = (MapState)(UnityEngine.Random.Range(0, Enum.GetNames(typeof(MapState)).Length));
             randRoomArray[randRoomArray.Count - 1].SetActive(false);
             previousMap = randomMap;
+
+            if (currentRoomNumber == (int)roomNumber / 3 || currentRoomNumber == (int)roomNumber / 3 * 2)
+            {
+                Debug.Log("asdfasdf");
+                randRoomArray.Add(Instantiate(shopMap, Vector3.zero, Quaternion.identity));
+                randRoomArray[randRoomArray.Count - 1].SetActive(false);
+            }
         }
 
         randRoomArray.Add(Instantiate(bossMap, Vector3.zero, Quaternion.identity));
