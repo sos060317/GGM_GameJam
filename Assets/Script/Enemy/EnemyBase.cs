@@ -23,7 +23,7 @@ public abstract class EnemyBase : MonoBehaviour
     [Header("공격 관련 스탯")]
     [SerializeField] private float attackMinRate;
     [SerializeField] private float attackMaxRate;
-    [SerializeField] protected EnemyBullet bulletPrefab;
+    [SerializeField] protected GameObject bulletPrefab;
 
     #endregion
 
@@ -133,12 +133,22 @@ public abstract class EnemyBase : MonoBehaviour
 
         rigid.AddForce(dir.normalized * 10, ForceMode2D.Impulse);
 
-        Debug.Log("공격받음");
-
         yield return new WaitForSeconds(0.1f);
 
         rigid.velocity = Vector2.zero;
     }
 
     protected abstract void ShootBullet();
+
+    private void AttackStart()
+    {
+        canMove = false;
+        agent.isStopped = true;
+    }
+
+    private void AttackEnd()
+    {
+        canMove = true;
+        agent.isStopped = false;
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Rendering.Universal;
 
 public class Player : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     public LayerMask enemyLayer;
     public Transform swordParent;
     public TextSword sword;
+    public Light2D light;
 
     #region 대쉬 관련 스탯
 
@@ -60,6 +62,7 @@ public class Player : MonoBehaviour
         SwordRotationUpdate();
         HealthBarUpdate();
         AnimationUpdate();
+        LightUpdate();
     }
 
     private void InputUpdate()
@@ -230,6 +233,11 @@ public class Player : MonoBehaviour
     private void AnimationUpdate()
     {
         anim.SetBool("isWalk", isWalk);
+    }
+
+    private void LightUpdate()
+    {
+        light.intensity = curHealth / maxHealth;
     }
 
     public void Init(PlayerLevelData data)
