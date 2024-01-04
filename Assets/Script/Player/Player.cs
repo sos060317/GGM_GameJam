@@ -279,7 +279,9 @@ public class Player : MonoBehaviour
             return;
         }
 
-        curHealth -= damage;
+        curHealth -= Mathf.Max(curHealth - damage, 0);
+
+        GameManager.Instance.SetHealthUI(curHealth, maxHealth);
 
         if (curHealth <= 0)
         {
@@ -305,7 +307,9 @@ public class Player : MonoBehaviour
             return;
         }
 
-        curHealth -= damage;
+        curHealth -= Mathf.Max(curHealth - damage, 0);
+
+        GameManager.Instance.SetHealthUI(curHealth, maxHealth);
 
         if (curHealth <= 0)
         {
