@@ -137,6 +137,7 @@ public class Player : MonoBehaviour
 
         isDash = true;
         canDash = false;
+        gameObject.layer = 9;
 
         Vector3 lastAfterImagePos = transform.position;
 
@@ -168,6 +169,7 @@ public class Player : MonoBehaviour
         }
 
         isDash = false;
+        gameObject.layer = 8;
 
         dashTimer = dashCoolTime;
 

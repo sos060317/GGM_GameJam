@@ -37,9 +37,9 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected NavMeshAgent agent;
     Rigidbody2D rigid;
-    Animator anim;
+    protected Animator anim;
 
-    private void Start()
+    protected virtual void Start()
     {
         target = GameManager.Instance.curPlayer.transform;
 
@@ -55,7 +55,7 @@ public abstract class EnemyBase : MonoBehaviour
         attackRate = Random.Range(attackMinRate, attackMaxRate);
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         MoveUpdate();
         AttackUpdate();
@@ -71,7 +71,7 @@ public abstract class EnemyBase : MonoBehaviour
         agent.SetDestination(target.position);
     }
 
-    private void AttackUpdate()
+    protected virtual void AttackUpdate()
     {
         if (attackTimer >= attackRate)
         {
@@ -131,9 +131,13 @@ public abstract class EnemyBase : MonoBehaviour
     {
         Vector2 dir = transform.position - target.position;
 
+        rigid.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         rigid.AddForce(dir.normalized * 10, ForceMode2D.Impulse);
 
         yield return new WaitForSeconds(0.1f);
+
+        rigid.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
 
         rigid.velocity = Vector2.zero;
     }
