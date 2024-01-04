@@ -8,7 +8,7 @@ public class Oxygen : MonoBehaviour
 {
     [SerializeField] private float maxOxygenAmount = 100.0f;
     [SerializeField] private float currentOxygenAmount;
-    [SerializeField] private Slider oxygenSlider;
+    [SerializeField] private Image oxygenSlider;
 
     private void OnEnable()
     {
@@ -35,6 +35,6 @@ public class Oxygen : MonoBehaviour
 
     private void DownOxygen()
     {
-
+        oxygenSlider.fillAmount = currentOxygenAmount / maxOxygenAmount;
     }
 }

@@ -89,16 +89,19 @@ public class GameManager : MonoBehaviour
         {
             qSkill.UseSkill(qSkillDetails);
             qSkillTimer = 0;
+
+            if (oxygen)
+                oxygen.AmountDown(15.0f);
         }
 
         if (Input.GetKeyDown(KeyCode.E) && eSkill != null && eSkillTimer > eSkillDetails.coolTime)
         {
             eSkill.UseSkill(eSkillDetails);
             eSkillTimer = 0;
-        }
 
-        if (oxygen)
-            oxygen.AmountDown(15.0f);
+            if (oxygen)
+                oxygen.AmountDown(15.0f);
+        }
     }
 
     private void SkillCooltimeUpdate()
