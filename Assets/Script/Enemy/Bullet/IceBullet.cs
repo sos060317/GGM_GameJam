@@ -24,7 +24,7 @@ public class IceBullet : MonoBehaviour
         {
             // 플레이어 데미지 입히기
 
-            GameManager.Instance.curPlayer.OnDamege(damage);
+            GameManager.Instance.curPlayer.OnDamageSlow(damage, 3); 
 
             Instantiate(hitEffect, transform.position, Quaternion.identity);
 

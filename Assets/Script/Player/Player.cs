@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
 
     private float curHealth;
     private float dashTimer;
+    private float baseMoveSpeed;
 
     private bool isWalk;
     private bool isDash;
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
         tr = GetComponent<TrailRenderer>();
 
         curHealth = maxHealth;
+        baseMoveSpeed = moveSpeed;
     }
 
     private void Update()
@@ -268,6 +270,34 @@ public class Player : MonoBehaviour
         StartCoroutine(HitRoutine());
     }
 
+    Coroutine slowCoroutine;
+    public void OnDamageSlow(float damage, float time)
+    {
+        if (isInvincibility || isDash)
+        {
+            return;
+        }
+
+        curHealth -= damage;
+
+        if (curHealth <= 0)
+        {
+            // Á×´Â ·ÎÁ÷
+
+            return;
+        }
+
+        GameManager.Instance.CameraShake(20, 0.3f);
+
+        if (slowCoroutine != null)
+        {
+            StopCoroutine(slowCoroutine);
+        }
+
+        StartCoroutine(HitRoutine());
+        slowCoroutine = StartCoroutine(SlowRoutine(time));
+    }
+
     private IEnumerator HitRoutine()
     {
         isInvincibility = true;
@@ -277,6 +307,15 @@ public class Player : MonoBehaviour
 
         isInvincibility = false;
         sr.color = new Color(1, 1, 1, 1);
+    }
+
+    private IEnumerator SlowRoutine(float time)
+    {
+        moveSpeed = baseMoveSpeed * 0.3f;
+
+        yield return new WaitForSeconds(time);
+
+        moveSpeed = baseMoveSpeed;
     }
 
     private void OnDrawGizmos()
