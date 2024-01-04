@@ -9,6 +9,9 @@ public class Boss : EnemyBase
 
     public EnemyParrernBullet[] patternBullets;
 
+    public AudioClip readySound;
+    public AudioClip attackSound;
+
     private float skillRate;
     private float skillTimer;
 
@@ -38,6 +41,7 @@ public class Boss : EnemyBase
         if (skillTimer >= skillRate && !isSkilling)
         {
             anim.SetTrigger("AttackReady");
+            SoundManager.Instance.PlaySound(readySound);
             skillRate = Random.Range(skillMinTime, skillMaxTime);
             skillTimer = 0;
             isSkilling = true;
@@ -78,6 +82,8 @@ public class Boss : EnemyBase
     // 일반 총알 전체 공격 점점 돌아감
     private IEnumerator Pattern01()
     {
+        SoundManager.Instance.PlaySound(attackSound);
+
         int shotCount = 10;
         int bulletCount = 36;
 

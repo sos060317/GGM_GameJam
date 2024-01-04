@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -397,5 +398,10 @@ public class GameManager : MonoBehaviour
     public void PlayBossCutscene()
     {
         playableDirector.Play();
+    }
+
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }
