@@ -5,26 +5,35 @@ using TMPro;
 
 public class SkillItem : MonoBehaviour
 {
-    public SkillDetails skillDetails;
+    public SkillDetails[] skillDetails;
     public TextMeshProUGUI priceText;
+
+    private SkillDetails skill;
+    private SpriteRenderer sr;
 
     private bool isEnter;
 
-    private void Start()
+    private void OnEnable()
     {
         Init();
     }
 
     private void Init()
     {
-        priceText.text = skillDetails.price.ToString() + "$";
+        sr = GetComponent<SpriteRenderer>();
+
+        skill = skillDetails[Random.Range(0, skillDetails.Length)];
+
+        sr.sprite = skill.skillImage;
+
+        priceText.text = skill.price.ToString() + "$";
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F) && isEnter)
         {
-            GameManager.Instance.GetSkillItem(skillDetails, gameObject);
+            GameManager.Instance.GetSkillItem(skill, gameObject);
         }
     }
 
