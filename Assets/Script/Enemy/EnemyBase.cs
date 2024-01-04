@@ -42,9 +42,11 @@ public abstract class EnemyBase : MonoBehaviour
     Rigidbody2D rigid;
     protected Animator anim;
 
+    private bool isDie = false;
+
     protected virtual void Start()
     {
-        target = GameManager.Instance.curPlayer.transform;
+        target = GameManager.Instance.curPlayer.transform;  
 
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -94,6 +96,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     public void OnDamage(float damage)
     {
+        if (isDie)
+        {
+            return;
+        }
+
         curHealth -= damage;
 
         if (curHealth <= 0)
@@ -103,6 +110,8 @@ public abstract class EnemyBase : MonoBehaviour
             SoundManager.Instance.PlaySound(dieSound);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            isDie = true;
+            MapManager.Instance.EnemyDeathCountPlus();
             return;
         }
 
@@ -118,6 +127,11 @@ public abstract class EnemyBase : MonoBehaviour
     // Á×À¸¸é true ¾È Á×À¸¸é false¸¦ ¹ÝÈ¯
     public bool OnDamageCheck(float damage)
     {
+        if (isDie)
+        {
+            return true;
+        }
+
         curHealth -= damage;
 
         if (curHealth <= 0)
@@ -127,6 +141,8 @@ public abstract class EnemyBase : MonoBehaviour
             SoundManager.Instance.PlaySound(dieSound);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            isDie = true;
+            MapManager.Instance.EnemyDeathCountPlus();
             return true;
         }
 

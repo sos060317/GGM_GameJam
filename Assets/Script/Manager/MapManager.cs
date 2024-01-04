@@ -13,6 +13,11 @@ public class MapManager : MonoBehaviour
     private List<GameObject> randRoomArray = new List<GameObject>(); // 랜덤으로 돌려서 나온 맵들
     private int currentMap = 0; // 현재 진행중인 맵
 
+    public bool mapClaer;
+
+    public int mapEnemyCount;
+    public int mapEnemyDeathCount;
+
     private static MapManager instance = null;
 
     public static MapManager Instance
@@ -95,6 +100,9 @@ public class MapManager : MonoBehaviour
             return;
         }
 
+        mapEnemyCount = 1;
+        mapEnemyDeathCount = 0;
+
         randRoomArray[currentMap + 1].SetActive(true);
         GameManager.Instance.curPlayer.transform.position
             = randRoomArray[currentMap + 1].GetComponent<Map>().enterPoint.position;
@@ -118,5 +126,15 @@ public class MapManager : MonoBehaviour
         //GameManager.Instance.curPlayer.transform.position
         //    = randRoomArray[currentMap + 1].GetComponent<Map>().enterPoint.position;
         //currentMap++;
+    }
+
+    public void EnemyDeathCountPlus()
+    {
+        mapEnemyDeathCount++;
+
+        if (mapEnemyCount == mapEnemyDeathCount)
+        {
+            randRoomArray[currentMap].GetComponent<Map>().MapClear();
+        }
     }
 }

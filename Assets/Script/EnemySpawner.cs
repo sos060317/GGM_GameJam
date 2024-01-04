@@ -12,8 +12,18 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float maxSpawnTime;
     private float currentSpawnTime = 0;
 
+    private void OnEnable()
+    {
+        MapManager.Instance.mapEnemyCount = maxEnemyNumber;
+    }
+
     private void Update()
     {
+        if (MapManager.Instance.mapClaer)
+        {
+            return;
+        }
+
         if (currentSpawnTime <= maxSpawnTime)
         {
             currentSpawnTime += Time.deltaTime;

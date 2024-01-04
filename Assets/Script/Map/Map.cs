@@ -11,6 +11,8 @@ public class Map : MonoBehaviour
     public MapState mapState;
     //public RoomEffect currentEffect;
 
+    public GameObject door;
+
     public void StartGimmick()
     {
         switch (mapState) 
@@ -41,6 +43,11 @@ public class Map : MonoBehaviour
     //{
     //    currentEffect?.UpdateRoomEffect();
     //}
+
+    public void MapClear()
+    {
+        door.SetActive(false);
+    }
 }
 
 public enum MapState
