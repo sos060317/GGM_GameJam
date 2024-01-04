@@ -94,6 +94,9 @@ public class GameManager : MonoBehaviour
             eSkill.UseSkill(eSkillDetails);
             eSkillTimer = 0;
         }
+
+        if (oxygen)
+            oxygen.AmountDown(15.0f);
     }
 
     private void SkillCooltimeUpdate()
