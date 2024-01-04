@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Image healthImage;
     [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private GameObject lockObject;
 
     public PlayerLevelData[] playerLevelDatas;
 
@@ -276,6 +277,8 @@ public class GameManager : MonoBehaviour
         }
 
         isCanESkill = true;
+
+        lockObject.SetActive(false);
 
         eSkillPanel.gameObject.SetActive(true);
 
