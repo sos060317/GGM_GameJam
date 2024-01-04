@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27701485930bc642bfd408c5f4ad9bd, type: 3}
   m_Name: SkillData_Rush
   m_EditorClassIdentifier: 
-  skillImage: {fileID: 21300000, guid: bb51334c6930f864abac38001f7bdf6e, type: 3}
+  skillImage: {fileID: -1899639731, guid: ea797f1604b719a41a5f6419240956f0, type: 3}
   coolTime: 8
   price: 40
   damage: 50
