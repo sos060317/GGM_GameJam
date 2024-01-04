@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27701485930bc642bfd408c5f4ad9bd, type: 3}
   m_Name: SkillData_FireBall
   m_EditorClassIdentifier: 
-  skillImage: {fileID: 21300000, guid: 660822d7983c65c49b6a2b38f0f18178, type: 3}
+  skillImage: {fileID: -946826521, guid: 665f5a53b1efee442881ed9b2a7f1396, type: 3}
   coolTime: 30
   price: 130
   damage: 30
