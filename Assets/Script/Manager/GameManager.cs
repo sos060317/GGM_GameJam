@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Playables;
 
 public class GameManager : MonoBehaviour
 {
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
 
     private SkillDetails qSkillDetails;
     private SkillDetails eSkillDetails;
+
+    public PlayableDirector playableDirector;
 
     private float qSkillTimer;
     private float eSkillTimer;
@@ -93,6 +96,8 @@ public class GameManager : MonoBehaviour
 
         restartButton.gameObject.SetActive(false);
         titleButton.gameObject.SetActive(false);
+
+        playableDirector = GetComponent<PlayableDirector>();
     }
 
     private void Update()
@@ -384,5 +389,10 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void PlayBossCutscene()
+    {
+        playableDirector.Play();
     }
 }

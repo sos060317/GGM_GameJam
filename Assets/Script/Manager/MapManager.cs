@@ -90,6 +90,8 @@ public class MapManager : MonoBehaviour
             bossMap.SetActive(true);
             GameManager.Instance.curPlayer.transform.position = bossMap.transform.GetChild(1).position;
             randRoomArray[currentMap].SetActive(false);
+
+            GameManager.Instance.PlayBossCutscene();
             return;
         }
 
