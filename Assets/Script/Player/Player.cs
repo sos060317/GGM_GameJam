@@ -256,6 +256,13 @@ public class Player : MonoBehaviour
     private void HealthUpdate()
     {
         curHealth -= Time.deltaTime * GameManager.Instance.playerHealthMultiply;
+
+        if (curHealth <= 0)
+        {
+            GameManager.Instance.GameOver();
+
+            Destroy(gameObject);
+        }
     }
 
     public void Init(PlayerLevelData data)
@@ -278,6 +285,10 @@ public class Player : MonoBehaviour
         {
             // Á×´Â ·ÎÁ÷
 
+            GameManager.Instance.GameOver();
+
+            Destroy(gameObject);
+
             return;
         }
 
@@ -299,6 +310,10 @@ public class Player : MonoBehaviour
         if (curHealth <= 0)
         {
             // Á×´Â ·ÎÁ÷
+
+            GameManager.Instance.GameOver();
+
+            Destroy(gameObject);
 
             return;
         }

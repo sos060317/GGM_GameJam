@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -28,6 +27,17 @@ public class GameManager : MonoBehaviour
     public PlayerLevelData[] playerLevelDatas;
 
     public float playerHealthMultiply;
+
+    #region 게임오버 관련
+
+    [Space(10)]
+    [Header("게임오버 관련")]
+    [SerializeField] private Image gameOverPanel;
+    [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private TextMeshProUGUI restartButton;
+    [SerializeField] private TextMeshProUGUI titleButton;
+
+    #endregion
 
     [HideInInspector] public int curPlayerLevel = 0;
 
@@ -77,6 +87,12 @@ public class GameManager : MonoBehaviour
         eSkillPanel.Init(null);
 
         eSkillPanel.gameObject.SetActive(false);
+
+        gameOverPanel.gameObject.SetActive(false);
+        gameOverText.gameObject.SetActive(false);
+
+        restartButton.gameObject.SetActive(false);
+        titleButton.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -171,10 +187,10 @@ public class GameManager : MonoBehaviour
             StopCoroutine(effectImageRoutine);
         }
 
-        effectImageRoutine = StartCoroutine(FadeOutObject(effectImage, time, fadeAmount));
+        effectImageRoutine = StartCoroutine(FadeOutObjectEffect(effectImage, time, fadeAmount));
     }
 
-    private IEnumerator FadeOutObject(Image _image, float time, float fadeAmount)
+    private IEnumerator FadeOutObjectEffect(Image _image, float time, float fadeAmount)
     {
         if (time == 0)
         {
@@ -266,5 +282,107 @@ public class GameManager : MonoBehaviour
         healthText.text = Mathf.Ceil(curHealth).ToString();
 
         healthImage.fillAmount = curHealth / maxHealth;
+    }
+
+    public void GameOver()
+    {
+        isStop = true;
+
+        StartCoroutine(GameOverRoutine());
+    }
+
+    private IEnumerator GameOverRoutine()
+    {
+        // 게임 오버 텍스트 띄우기
+        gameOverPanel.gameObject.SetActive(true);
+        gameOverText.gameObject.SetActive(true);
+
+        StartCoroutine(FadeOutObject(gameOverPanel, 1));
+        yield return FadeOutObject(gameOverText, 1);
+
+        //재시작 버튼 활성화
+        restartButton.gameObject.SetActive(true);
+
+        yield return FadeOutObject(restartButton, 1);
+
+        //타이틀 버튼 활성화
+        titleButton.gameObject.SetActive(true);
+
+        yield return FadeOutObject(titleButton, 1);
+    }
+
+    private IEnumerator FadeOutObject(Image _image, float time)
+    {
+        if (time == 0)
+        {
+            yield return null;
+        }
+
+        float targetAlpha = _image.color.a;
+        float curAlpha = 0;
+        float temp = 0;
+
+        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, curAlpha);
+
+        while (temp <= time)
+        {
+            curAlpha += Time.deltaTime * targetAlpha / time;
+
+            _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, curAlpha);
+
+            temp += Time.deltaTime;
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeOutObject(Image _image, float time, float fadeAmount)
+    {
+        if (time == 0)
+        {
+            yield return null;
+        }
+
+        float targetAlpha = fadeAmount;
+        float curAlpha = 0;
+        float temp = 0;
+
+        _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, curAlpha);
+
+        while (temp <= time)
+        {
+            curAlpha += Time.deltaTime * targetAlpha / time;
+
+            _image.color = new Color(_image.color.r, _image.color.g, _image.color.b, curAlpha);
+
+            temp += Time.deltaTime;
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator FadeOutObject(TextMeshProUGUI _text, float time)
+    {
+        if (time == 0)
+        {
+            yield return null;
+        }
+
+        float targetAlpha = _text.color.a;
+        float curAlpha = 0;
+        float temp = 0;
+
+        _text.color = new Color(_text.color.r, _text.color.g, _text.color.b, curAlpha);
+
+        while (temp <= time)
+        {
+            curAlpha += Time.deltaTime * targetAlpha / time;
+
+            _text.color = new Color(_text.color.r, _text.color.g, _text.color.b, curAlpha);
+
+            temp += Time.deltaTime;
+
+            yield return null;
+        }
     }
 }
