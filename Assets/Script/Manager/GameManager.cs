@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour
 
     public void SetHealthUI(float curHealth, float maxHealth)
     {
-        healthText.text = curHealth + " / " + maxHealth;
+        healthText.text = curHealth.ToString();
 
         healthImage.fillAmount = curHealth / maxHealth;
     }
