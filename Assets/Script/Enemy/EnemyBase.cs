@@ -139,16 +139,4 @@ public abstract class EnemyBase : MonoBehaviour
     }
 
     protected abstract void ShootBullet();
-
-    private void AttackStart()
-    {
-        canMove = false;
-        agent.isStopped = true;
-    }
-
-    private void AttackEnd()
-    {
-        canMove = true;
-        agent.isStopped = false;
-    }
 }
