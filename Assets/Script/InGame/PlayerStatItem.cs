@@ -1,9 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerStatItem : MonoBehaviour
 {
+    public TextMeshProUGUI priceText;
+    public TextMeshProUGUI explanationText;
+    public GameObject textBG;
+
+    private float price;
+
     private bool isEnter;
 
     private void Start()
@@ -13,6 +20,18 @@ public class PlayerStatItem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        Init();
+    }
+
+    private void Init()
+    {
+        priceText.text = GameManager.Instance.playerLevelDatas[GameManager.Instance.curPlayerLevel].price.ToString() + "$";
+        price = GameManager.Instance.playerLevelDatas[GameManager.Instance.curPlayerLevel].price;
+
+        explanationText.text = GameManager.Instance.playerLevelDatas[GameManager.Instance.curPlayerLevel].explanation;
+
+        textBG.SetActive(false);
     }
 
     private void Update()
@@ -29,6 +48,7 @@ public class PlayerStatItem : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isEnter = true;
+            textBG.SetActive(true);
         }
     }
 
@@ -37,6 +57,7 @@ public class PlayerStatItem : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isEnter = false;
+            textBG.SetActive(false);
         }
     }
 }

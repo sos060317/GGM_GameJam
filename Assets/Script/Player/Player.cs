@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.isStop)
+        if (GameManager.Instance.isStop)    
         {
             rigid.velocity = Vector2.zero;
             anim.SetBool("isWalk", false);

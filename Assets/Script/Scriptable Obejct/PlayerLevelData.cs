@@ -10,4 +10,9 @@ public class PlayerLevelData : ScriptableObject
     public float damage;
 
     public float moveSpeed;
+
+    public float price;
+
+    [TextArea]
+    public string explanation;
 }
