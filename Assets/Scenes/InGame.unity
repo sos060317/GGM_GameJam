@@ -933,7 +933,7 @@ MonoBehaviour:
   roomArray:
   - {fileID: 6068706420811453502, guid: 66a9dff0f6bce2a4887d9670307b7b8a, type: 3}
   - {fileID: 6068706420811453502, guid: c976c406a64e2254094b934a1f076223, type: 3}
-  - {fileID: 9074022761567703111, guid: 707b4d23a45a5ff41a1be9f273b467a6, type: 3}
+  - {fileID: 6068706420811453502, guid: c2a627fa061c19c409a9f1457b395e52, type: 3}
   - {fileID: 5814438384422648865, guid: ab4c665756d5a534c92979c880e58eac, type: 3}
 --- !u!4 &811100134
 Transform:
@@ -2136,6 +2136,8 @@ MonoBehaviour:
   eSkillPanel: {fileID: 1264692694}
   cameraShake: {fileID: 512554386}
   effectImage: {fileID: 401972775}
+  healthImage: {fileID: 0}
+  healthText: {fileID: 0}
   playerLevelDatas: []
   curPlayerLevel: 0
   isCanESkill: 0
