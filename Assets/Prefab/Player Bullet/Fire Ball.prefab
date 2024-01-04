@@ -275,6 +275,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 581a96e510fd34f47962f167820485de, type: 3}
   sec: 1
   isRoop: 1
+  shakeAmount: 0
+  shakeTime: 0
 --- !u!114 &1670780284547934534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +293,7 @@ MonoBehaviour:
   lifeTime: 2
   isEnemyPenetrate: 1
   isWallPenetrate: 1
+  enemyBulletDestroy: 1
   dieEffect: {fileID: 3256095853573468703, guid: 320a45b3a8b74034d822d7e77d6a67d1, type: 3}
 --- !u!58 &1670780284547934535
 CircleCollider2D:
