@@ -7248,6 +7248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae68910d59b66b944b8fd1a7af3fe9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oxygen: {fileID: 0}
   enterPoint: {fileID: 6068706421468385221}
   mapState: 0
 --- !u!61 &2990418589389480311
@@ -7327,7 +7328,25 @@ PlayableDirector:
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
-  m_SceneBindings: []
+  m_SceneBindings:
+  - key: {fileID: 3286327199889338636, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -4996903825845569205, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -831988937983682392, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 811975720206759673, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6534977915040457676, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 9031787829374628733, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8148398604365412226, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -1824272677578012468, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 898143190355029162, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &6068706420832475625
