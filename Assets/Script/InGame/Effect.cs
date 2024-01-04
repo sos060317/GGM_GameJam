@@ -21,7 +21,11 @@ public class Effect : MonoBehaviour
 
         waitTime = new WaitForSeconds(sec / sprites.Count);
 
-        GameManager.Instance.CameraShake(shakeAmount, shakeTime);
+        if (shakeTime > 0)
+        {
+            GameManager.Instance.CameraShake(shakeAmount, shakeTime);
+        }
+        
 
         if (isRoop)
         {
