@@ -1213,7 +1213,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -4294,7 +4294,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
-  m_InitialState: 0
+  m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -4317,6 +4317,10 @@ PlayableDirector:
     value: {fileID: 1866985311}
   - key: {fileID: 898143190355029162, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
     value: {fileID: 791341746}
+  - key: {fileID: 4812040630265318606, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 5005613938571649593, guid: 236e7175aaccca8489e0d8f3b3f0044d, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - 65982f1033047ae4ea02150daa726f40: {fileID: 2066841943}

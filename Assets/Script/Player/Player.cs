@@ -255,7 +255,7 @@ public class Player : MonoBehaviour
 
     private void HealthUpdate()
     {
-        curHealth -= Time.deltaTime * GameManager.Instance.playerHealthMultiply;
+        curHealth = Mathf.Max(curHealth - Time.deltaTime * GameManager.Instance.playerHealthMultiply, 0);
 
         if (curHealth <= 0)
         {
@@ -279,7 +279,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        curHealth -= Mathf.Max(curHealth - damage, 0);
+        curHealth = Mathf.Max(curHealth - damage, 0);
 
         GameManager.Instance.SetHealthUI(curHealth, maxHealth);
 
@@ -307,7 +307,7 @@ public class Player : MonoBehaviour
             return;
         }
 
-        curHealth -= Mathf.Max(curHealth - damage, 0);
+        curHealth = Mathf.Max(curHealth - damage, 0);
 
         GameManager.Instance.SetHealthUI(curHealth, maxHealth);
 
