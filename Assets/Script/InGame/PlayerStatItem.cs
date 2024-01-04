@@ -19,6 +19,7 @@ public class PlayerStatItem : MonoBehaviour
         if (GameManager.Instance.curPlayerLevel >= GameManager.Instance.playerLevelDatas.Length)
         {
             Destroy(gameObject);
+            return;
         }
 
         Init();

@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI restartButton;
     [SerializeField] private TextMeshProUGUI titleButton;
 
+    [SerializeField] private Image gameClearPanel;
+
     #endregion
 
     [HideInInspector] public int curPlayerLevel = 0;
@@ -54,6 +56,8 @@ public class GameManager : MonoBehaviour
     private SkillDetails eSkillDetails;
 
     public PlayableDirector playableDirector;
+
+    public bool noDamage;
 
     private float qSkillTimer;
     private float eSkillTimer;
@@ -102,6 +106,8 @@ public class GameManager : MonoBehaviour
         restartButton.gameObject.SetActive(false);
         titleButton.gameObject.SetActive(false);
 
+        gameClearPanel.gameObject.SetActive(false);
+
         playableDirector = GetComponent<PlayableDirector>();
 
         SoundManager.Instance.PlayMusic(bgm);
@@ -113,6 +119,11 @@ public class GameManager : MonoBehaviour
         SkillCooltimeUpdate();
 
         goldText.text = gold.ToString();
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            noDamage = !noDamage;
+        }
     }
 
     private void SkillInputUpdate()
@@ -415,5 +426,11 @@ public class GameManager : MonoBehaviour
     public void MapClear()
     {
         curPlayer.Heal(20);
+    }
+
+    public void GameClear()
+    {
+        isStop = true;
+        gameClearPanel.gameObject.SetActive(true);
     }
 }

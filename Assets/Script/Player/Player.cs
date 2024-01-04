@@ -201,6 +201,8 @@ public class Player : MonoBehaviour
 
         float timer = 0f;
 
+        gameObject.layer = 9;
+
         List<Collider2D> enemise = new List<Collider2D>();
 
         Vector2 mousePos = Input.mousePosition;
@@ -237,11 +239,18 @@ public class Player : MonoBehaviour
             }
         }
 
+        gameObject.layer = 8;
+
         rigid.velocity = Vector3.zero;
     }
 
     private void HealthBarUpdate()
     {
+        if (GameManager.Instance.noDamage)
+        {
+            return;
+        }
+
         GameManager.Instance.SetHealthUI(curHealth, maxHealth); 
     }
 
@@ -276,7 +285,7 @@ public class Player : MonoBehaviour
 
     public void OnDamege(float damage)
     {
-        if (isInvincibility || isDash)
+        if (isInvincibility || isDash || GameManager.Instance.noDamage)
         {
             return;
         }
@@ -304,7 +313,7 @@ public class Player : MonoBehaviour
     Coroutine slowCoroutine;
     public void OnDamageSlow(float damage, float time)
     {
-        if (isInvincibility || isDash)
+        if (isInvincibility || isDash || GameManager.Instance.noDamage)
         {
             return;
         }

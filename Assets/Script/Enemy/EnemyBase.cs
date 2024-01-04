@@ -35,7 +35,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected float attackTimer;
     protected float attackRate;
-    private float curHealth;
+    protected float curHealth;
 
     protected Transform target;
 
@@ -45,7 +45,7 @@ public abstract class EnemyBase : MonoBehaviour
     Rigidbody2D rigid;
     protected Animator anim;
 
-    private bool isDie = false;
+    protected bool isDie = false;
 
     protected virtual void Start()
     {
@@ -97,7 +97,7 @@ public abstract class EnemyBase : MonoBehaviour
         attackTimer += Time.deltaTime;
     }
 
-    public void OnDamage(float damage)
+    public virtual void OnDamage(float damage)
     {
         if (isDie)
         {
@@ -129,7 +129,7 @@ public abstract class EnemyBase : MonoBehaviour
     }
 
     // Á×À¸¸é true ¾È Á×À¸¸é false¸¦ ¹ÝÈ¯
-    public bool OnDamageCheck(float damage)
+    public virtual bool OnDamageCheck(float damage)
     {
         if (isDie)
         {
@@ -162,7 +162,7 @@ public abstract class EnemyBase : MonoBehaviour
         return false;
     }
 
-    private IEnumerator KnockbackRoutine()
+    protected IEnumerator KnockbackRoutine()
     {
         Vector2 dir = transform.position - target.position;
 

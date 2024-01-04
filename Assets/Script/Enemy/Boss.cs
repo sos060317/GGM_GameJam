@@ -124,4 +124,70 @@ public class Boss : EnemyBase
         agent.isStopped = false;
         anim.SetBool("AttackEnd", true);
     }
+
+    public override void OnDamage(float damage)
+    {
+        if (isDie)
+        {
+            return;
+        }
+
+        curHealth -= damage;
+
+        if (curHealth <= 0)
+        {
+            GameManager.Instance.CameraShake(20, 0.4f);
+            GameManager.Instance.ShowEffectImage(0.1f, 1);
+            SoundManager.Instance.PlaySound(dieSound);
+            GameManager.Instance.GameClear();
+            GameManager.Instance.gold += Random.Range(minGold, maxGold);
+            Instantiate(dieEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            isDie = true;
+            MapManager.Instance.EnemyDeathCountPlus();
+            return;
+        }
+
+        SoundManager.Instance.PlaySound(hitSound, Random.Range(0.8f, 1.1f));
+
+        StartCoroutine(KnockbackRoutine());
+
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
+
+        GameManager.Instance.CameraShake(15, 0.1f);
+    }
+
+    public override bool OnDamageCheck(float damage)
+    {
+        if (isDie)
+        {
+            return true;
+        }
+
+        curHealth -= damage;
+
+        if (curHealth <= 0)
+        {
+            GameManager.Instance.CameraShake(20, 0.4f);
+            GameManager.Instance.ShowEffectImage(0.1f, 1);
+            SoundManager.Instance.PlaySound(dieSound);
+            GameManager.Instance.gold += Random.Range(minGold, maxGold);
+            GameManager.Instance.GameClear();
+            Instantiate(dieEffect, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            isDie = true;
+            MapManager.Instance.EnemyDeathCountPlus();
+            return true;
+        }
+
+        SoundManager.Instance.PlaySound(hitSound, Random.Range(0.8f, 1.1f));
+
+        StartCoroutine(KnockbackRoutine());
+
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
+
+        GameManager.Instance.CameraShake(30, 0.1f);
+
+        return false;
+    }
 }
