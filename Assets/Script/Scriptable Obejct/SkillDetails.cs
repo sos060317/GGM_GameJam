@@ -14,4 +14,7 @@ public class SkillDetails : ScriptableObject
     public float damage;
 
     public SkillBase skillPrefab;
+
+    [TextArea]
+    public string explanation;
 }

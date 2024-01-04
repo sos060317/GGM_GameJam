@@ -7,6 +7,8 @@ public class SkillItem : MonoBehaviour
 {
     public SkillDetails[] skillDetails;
     public TextMeshProUGUI priceText;
+    public GameObject explanationObj;
+    public TextMeshProUGUI explanationText;
 
     private SkillDetails skill;
     private SpriteRenderer sr;
@@ -27,6 +29,9 @@ public class SkillItem : MonoBehaviour
         sr.sprite = skill.skillImage;
 
         priceText.text = skill.price.ToString() + "$";
+
+        explanationObj.SetActive(false);
+        explanationText.text = skill.explanation;
     }
 
     private void Update()
@@ -42,6 +47,7 @@ public class SkillItem : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isEnter = true;
+            explanationObj.SetActive(true);
         }
     }
 
@@ -50,6 +56,7 @@ public class SkillItem : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isEnter = false;
+            explanationObj.SetActive(false);
         }
     }
 }
