@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
+    [SerializeField] private GameObject oxygen;
+
     public Transform enterPoint;
 
     public MapState mapState;
@@ -16,8 +18,9 @@ public class Map : MonoBehaviour
             case MapState.Normal:
                 break;
             case MapState.Oxygen:
-
+                oxygen.SetActive(true);
                 break;
+
             case MapState.Wind:
 
                 break;

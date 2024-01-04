@@ -1,13 +1,18 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Oxygen : MonoBehaviour
 {
-    [SerializeField] private float oxygenAmount = 100.0f;
+    [SerializeField] private float maxOxygenAmount = 100.0f;
+    [SerializeField] private float currentOxygenAmount;
+    [SerializeField] private Slider oxygenSlider;
 
-    private void Start()
+    private void OnEnable()
     {
+        currentOxygenAmount = maxOxygenAmount;
         GameManager.Instance.oxygen = this;
     }
 
@@ -18,11 +23,18 @@ public class Oxygen : MonoBehaviour
 
     public void AmountDown(float downAmount)
     {
-        oxygenAmount -= downAmount;
+        currentOxygenAmount -= downAmount;
 
-        if (oxygenAmount <= 0)
+        DownOxygen();
+
+        if (currentOxygenAmount <= 0)
         {
-            Debug.Log("플레이어의 체력이 감소한다.");
+            Debug.Log("플레이어가 사망한다.");
         }
+    }
+
+    private void DownOxygen()
+    {
+
     }
 }
