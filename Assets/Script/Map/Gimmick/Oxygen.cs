@@ -21,6 +21,11 @@ public class Oxygen : MonoBehaviour
         GameManager.Instance.oxygen = null;
     }
 
+    private void Start()
+    {
+        //AmountDown(20);
+    }
+
     public void AmountDown(float downAmount)
     {
         currentOxygenAmount -= downAmount;
