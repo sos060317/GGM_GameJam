@@ -21,14 +21,14 @@ public abstract class EnemyBase : MonoBehaviour
 
     [Space(10)]
     [Header("공격 관련 스탯")]
-    [SerializeField] private float attackMinRate;
-    [SerializeField] private float attackMaxRate;
+    [SerializeField] protected float attackMinRate;
+    [SerializeField] protected float attackMaxRate;
     [SerializeField] protected GameObject bulletPrefab;
 
     #endregion
 
-    private float attackTimer;
-    private float attackRate;
+    protected float attackTimer;
+    protected float attackRate;
     private float curHealth;
 
     protected Transform target;

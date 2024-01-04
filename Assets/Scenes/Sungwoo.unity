@@ -336,7 +336,7 @@ Transform:
   m_Children:
   - {fileID: 441200896}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &217191320
 GameObject:
@@ -1392,11 +1392,14 @@ MonoBehaviour:
   maxHealth: 1000
   dieEffect: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
   hitEffect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
-  attackMinRate: 2
-  attackMaxRate: 4
+  attackMinRate: 5
+  attackMaxRate: 5
   bulletPrefab: {fileID: 5468241925033547165, guid: c27d4e41c77b0d94593078bc6cd8238e, type: 3}
-  skillMinTime: 1
-  skillMaxTime: 1
+  skillMinTime: 10
+  skillMaxTime: 14
+  patternBullets:
+  - {fileID: 6707260734324930308, guid: e044537d44202544b9f2c29f4ce7ecd2, type: 3}
+  - {fileID: 6707260734324930308, guid: a260ad23779884041b7064410742621d, type: 3}
 --- !u!1 &580503899
 GameObject:
   m_ObjectHideFlags: 0
@@ -1474,7 +1477,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6068706420811453633, guid: 4c87cb913d5c98747bed2ae18515b20b, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6068706420811453633, guid: 4c87cb913d5c98747bed2ae18515b20b, type: 3}
       propertyPath: m_LocalPosition.x

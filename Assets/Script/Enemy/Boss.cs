@@ -7,6 +7,8 @@ public class Boss : EnemyBase
     public float skillMinTime;
     public float skillMaxTime;
 
+    public EnemyParrernBullet[] patternBullets;
+
     private float skillRate;
     private float skillTimer;
 
@@ -48,12 +50,24 @@ public class Boss : EnemyBase
 
     protected override void AttackUpdate()
     {
-         
+        if (attackTimer >= attackRate)
+        {
+            ShootBullet();
+            attackRate = Random.Range(attackMinRate, attackMaxRate);
+
+            attackTimer = 0;
+        }
+
+        attackTimer += Time.deltaTime;
     }
 
     protected override void ShootBullet()
     {
+        Vector2 dir = target.position - transform.position;
 
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        Instantiate(patternBullets[Random.Range(0, patternBullets.Length)], transform.position, Quaternion.Euler(0, 0, angle - 180)).Init(dir);
     }
 
     private void ThinkPattern()

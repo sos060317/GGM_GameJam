@@ -39,10 +39,13 @@ public class TextSword : MonoBehaviour
 
     private void AttackDamage()
     {
+        Debug.Log("DD");
+
         Collider2D[] targets = Physics2D.OverlapCircleAll(transform.position, scanRange, enemyLayer);
 
         foreach (var target in targets)
         {
+           
             target.GetComponent<EnemyBase>().OnDamage(damage);
         }
     }
