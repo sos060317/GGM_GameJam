@@ -135,6 +135,7 @@ public class MapManager : MonoBehaviour
         if (mapEnemyCount == mapEnemyDeathCount)
         {
             randRoomArray[currentMap].GetComponent<Map>().MapClear();
+            GameManager.Instance.MapClear();
         }
     }
 }

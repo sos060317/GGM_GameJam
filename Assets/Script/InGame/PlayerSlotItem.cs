@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerSlotItem : MonoBehaviour
 {
+    public int price;
+
+    public TextMeshProUGUI priceText;
+    public GameObject e;
+
     private bool isEnter;
 
     private void Start()
@@ -13,13 +19,17 @@ public class PlayerSlotItem : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        e.SetActive(false);
+        priceText.text = price.ToString() + "$";
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && isEnter)
+        if (Input.GetKeyDown(KeyCode.F) && isEnter && GameManager.Instance.gold >= price)
         {
             GameManager.Instance.SkillSlotUpgrade();
+            GameManager.Instance.gold -= price;
             Destroy(gameObject);
         }
     }
@@ -29,6 +39,7 @@ public class PlayerSlotItem : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isEnter = true;
+            e.SetActive(true);
         }
     }
 
@@ -37,6 +48,7 @@ public class PlayerSlotItem : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isEnter = false;
+            e.SetActive(false);
         }
     }
 }

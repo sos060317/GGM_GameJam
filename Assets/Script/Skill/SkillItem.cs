@@ -36,8 +36,9 @@ public class SkillItem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && isEnter)
+        if (Input.GetKeyDown(KeyCode.F) && isEnter && GameManager.Instance.gold >= skill.price)
         {
+            GameManager.Instance.gold -= skill.price;
             GameManager.Instance.GetSkillItem(skill, gameObject);
         }
     }

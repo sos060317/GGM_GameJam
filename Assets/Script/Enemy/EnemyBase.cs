@@ -30,6 +30,9 @@ public abstract class EnemyBase : MonoBehaviour
     public AudioClip hitSound;
     public AudioClip dieSound;
 
+    public int minGold;
+    public int maxGold;
+
     protected float attackTimer;
     protected float attackRate;
     private float curHealth;
@@ -108,6 +111,7 @@ public abstract class EnemyBase : MonoBehaviour
             GameManager.Instance.CameraShake(20, 0.4f);
             GameManager.Instance.ShowEffectImage(0.1f, 1);
             SoundManager.Instance.PlaySound(dieSound);
+            GameManager.Instance.gold += Random.Range(minGold, maxGold);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
             isDie = true;
@@ -139,6 +143,7 @@ public abstract class EnemyBase : MonoBehaviour
             GameManager.Instance.CameraShake(20, 0.4f);
             GameManager.Instance.ShowEffectImage(0.1f, 1);
             SoundManager.Instance.PlaySound(dieSound);
+            GameManager.Instance.gold += Random.Range(minGold, maxGold);
             Instantiate(dieEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
             isDie = true;

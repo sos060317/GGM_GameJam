@@ -9,7 +9,7 @@ public class PlayerStatItem : MonoBehaviour
     public TextMeshProUGUI explanationText;
     public GameObject textBG;
 
-    private float price;
+    private int price;
 
     private bool isEnter;
 
@@ -27,7 +27,7 @@ public class PlayerStatItem : MonoBehaviour
     private void Init()
     {
         priceText.text = GameManager.Instance.playerLevelDatas[GameManager.Instance.curPlayerLevel].price.ToString() + "$";
-        price = GameManager.Instance.playerLevelDatas[GameManager.Instance.curPlayerLevel].price;
+        price = (int)GameManager.Instance.playerLevelDatas[GameManager.Instance.curPlayerLevel].price;
 
         explanationText.text = GameManager.Instance.playerLevelDatas[GameManager.Instance.curPlayerLevel].explanation;
 
@@ -36,8 +36,9 @@ public class PlayerStatItem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && isEnter)
+        if (Input.GetKeyDown(KeyCode.F) && isEnter && GameManager.Instance.gold >= price)
         {
+            GameManager.Instance.gold -= price;
             GameManager.Instance.PlayerLevelUp();
             Destroy(gameObject);
         }

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Player curPlayer;
 
     public int gold;
+    public TextMeshProUGUI goldText;
 
     public bool isStop;
 
@@ -110,6 +111,8 @@ public class GameManager : MonoBehaviour
     {
         SkillInputUpdate();
         SkillCooltimeUpdate();
+
+        goldText.text = gold.ToString();
     }
 
     private void SkillInputUpdate()
@@ -407,5 +410,10 @@ public class GameManager : MonoBehaviour
     public void LoadScene(string name)
     {
         SceneManager.LoadScene(name);
+    }
+
+    public void MapClear()
+    {
+        curPlayer.Heal(20);
     }
 }

@@ -361,4 +361,9 @@ public class Player : MonoBehaviour
 
         Gizmos.DrawWireSphere(transform.position, rushSkillScanRange);
     }
+
+    public void Heal(float heal)
+    {
+        curHealth = Mathf.Min(maxHealth, curHealth + heal);
+    }
 }

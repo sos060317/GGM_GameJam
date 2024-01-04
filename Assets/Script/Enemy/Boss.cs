@@ -88,7 +88,7 @@ public class Boss : EnemyBase
         int bulletCount = 36;
 
         float offset = .0f;
-
+         
         GameManager.Instance.CameraShake(20, 2f);
 
         for (int i = 0; i < shotCount; i++)
