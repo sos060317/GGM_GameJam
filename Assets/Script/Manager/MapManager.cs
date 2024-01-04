@@ -72,6 +72,7 @@ public class MapManager : MonoBehaviour
             {
                 Debug.Log("asdfasdf");
                 randRoomArray.Add(Instantiate(shopMap, Vector3.zero, Quaternion.identity));
+                randRoomArray[randRoomArray.Count - 1].GetComponent<Map>().mapState = MapState.Shop;
                 randRoomArray[randRoomArray.Count - 1].SetActive(false);
             }
         }

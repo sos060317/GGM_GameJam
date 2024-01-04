@@ -21,6 +21,10 @@ public class Map : MonoBehaviour
             case MapState.Wind:
 
                 break;
+            
+            case MapState.Shop:
+
+                break;
         }
     }
 
@@ -40,5 +44,6 @@ public enum MapState
 {
     Normal = 0,
     Oxygen,
-    Wind
+    Wind,
+    Shop
 }
