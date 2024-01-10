@@ -58,8 +58,6 @@ public class GameManager : MonoBehaviour
 
     public PlayableDirector playableDirector;
 
-    public bool noDamage;
-
     private float qSkillTimer;
     private float eSkillTimer;
 
@@ -120,11 +118,6 @@ public class GameManager : MonoBehaviour
         SkillCooltimeUpdate();
 
         goldText.text = gold.ToString();
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            noDamage = !noDamage;
-        }
     }
 
     private void SkillInputUpdate()

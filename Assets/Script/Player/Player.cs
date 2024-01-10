@@ -246,11 +246,6 @@ public class Player : MonoBehaviour
 
     private void HealthBarUpdate()
     {
-        if (GameManager.Instance.noDamage)
-        {
-            return;
-        }
-
         GameManager.Instance.SetHealthUI(curHealth, maxHealth); 
     }
 
@@ -285,7 +280,7 @@ public class Player : MonoBehaviour
 
     public void OnDamege(float damage)
     {
-        if (isInvincibility || isDash || GameManager.Instance.noDamage)
+        if (isInvincibility || isDash)
         {
             return;
         }
@@ -313,7 +308,7 @@ public class Player : MonoBehaviour
     Coroutine slowCoroutine;
     public void OnDamageSlow(float damage, float time)
     {
-        if (isInvincibility || isDash || GameManager.Instance.noDamage)
+        if (isInvincibility || isDash)
         {
             return;
         }
