@@ -3247,6 +3247,7 @@ MonoBehaviour:
   curPlayerLevel: 0
   bgm: {fileID: 8300000, guid: 6cbfb3adf6266a74b8d02bef30b9be5c, type: 3}
   playableDirector: {fileID: 878640249}
+  noDamage: 0
   isCanESkill: 0
   oxygen: {fileID: 0}
 --- !u!4 &878640248
