@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI goldText;
 
     public bool isStop;
+    public bool isSkillFull;
 
     [SerializeField] private SkillPanel qSkillPanel;
     [SerializeField] private SkillPanel eSkillPanel;
@@ -194,6 +195,7 @@ public class GameManager : MonoBehaviour
             eSkillPanel.Init(eSkillDetails);
             eSkillTimer = eSkillDetails.coolTime;
             isEmptyESkill = false;
+            isSkillFull = true;
             Destroy(item);
             return;
         }
