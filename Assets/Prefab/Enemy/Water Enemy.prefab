@@ -132,8 +132,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5468241925033547165, guid: c27d4e41c77b0d94593078bc6cd8238e, type: 3}
   hitSound: {fileID: 8300000, guid: 6e63bf8e371b96c47a5d91221c871deb, type: 3}
   dieSound: {fileID: 8300000, guid: 4936ffe6d9d6e5643ac94d99952bfd1e, type: 3}
-  minGold: 4
-  maxGold: 6
+  minGold: 7
+  maxGold: 10
   attackSound: {fileID: 8300000, guid: 99e7407acf3ba8040b13410ad020a9e9, type: 3}
 --- !u!50 &3595546219267687335
 Rigidbody2D:
